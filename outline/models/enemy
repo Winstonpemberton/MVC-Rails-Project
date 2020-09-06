@@ -1,0 +1,7 @@
+fields
+:string name
+:integer damage
+:string picture
+
+associations
+belongs_to game

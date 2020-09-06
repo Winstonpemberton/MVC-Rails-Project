@@ -1,0 +1,10 @@
+fields
+:string name
+:string heal_amount
+:string picture
+:integer inventory_id
+:integer mercent_id
+
+associations
+belongs_to inventory
+belongs_to mercent

@@ -1,0 +1,10 @@
+fields
+:integer user_id
+:integer character_id
+
+associations
+has_many Users through worlds
+has_many Characters
+has_many Mercents
+has_many Enemies
+has_many Bosses

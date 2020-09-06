@@ -1,0 +1,7 @@
+fields
+:string Username
+:string Password_digest
+
+associations
+has_many Characters
+has_many Games through Worlds

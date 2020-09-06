@@ -1,0 +1,10 @@
+fields
+:name
+:gold
+:picture
+:user_id
+:game_id
+
+associations
+belongs_to user
+has_many inventories
