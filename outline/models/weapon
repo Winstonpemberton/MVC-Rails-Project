@@ -3,8 +3,10 @@ fields
 :string name
 :string damage
 :string picture
-:integer inventory_id
-:integer mercent_id
+
+associations
+has_many inventories
+has_many inventories through merchents
 
 associations
 belongs_to inventory

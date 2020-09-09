@@ -1,0 +1,8 @@
+fields
+:string name
+:string armor_rating
+:string picture
+
+associations
+has_many inventories
+has_many inventories through merchents

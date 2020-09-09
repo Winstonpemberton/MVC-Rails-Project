@@ -1,0 +1,25 @@
+Controllers
+
+user
+new, create, show, edit, update, delete
+
+Session
+new, create, delete
+
+Game
+new, create, delete
+
+character
+index, new, create, show, edit, update, delete
+
+Battle
+show and update ?
+
+Armor, Weapon, Potion, Inventory
+only a show
+
+world
+new, create, delete
+
+merchant
+has a show and a show for each category like Armors, Potions etc

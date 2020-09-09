@@ -2,9 +2,7 @@ fields
 :string name
 :string heal_amount
 :string picture
-:integer inventory_id
-:integer mercent_id
 
 associations
-belongs_to inventory
-belongs_to mercent
+has_many inventories
+has_many inventories through merchents

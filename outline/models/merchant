@@ -1,0 +1,14 @@
+fields
+:string name
+:string saying
+:string picture
+:integer inventory_id
+:integer weapon_id
+:integer armor_id
+:integer potion_id
+
+associations
+belongs_to inventory
+belongs_to weapon
+belongs_to armors
+belongs_to potions
