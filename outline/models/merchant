@@ -6,8 +6,10 @@ fields
 :integer weapon_id
 :integer armor_id
 :integer potion_id
+:integer game_id
 
 associations
+belongs_to game
 belongs_to inventory
 belongs_to weapon
 belongs_to armors
