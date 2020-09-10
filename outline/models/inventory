@@ -1,6 +1,9 @@
 INVENTORY
+fields
+string character_id
+
 associations
 
-has_many weapons
-has_many armors
-has_many potions
+has_many weapons through merchants
+has_many armors through merchants
+has_many potions through merchants

@@ -1,6 +1,7 @@
 fields
 :name
 :gold
+:health
 :picture
 
 associations
