@@ -4,5 +4,12 @@
 4. create controllers
 5. create views for user submitted data
 6. test the flow of the web pages
-7. brainstorm about the necessary methods
-8. make the methods 
+7. make seed data
+8. brainstorm about the necessary methods
+9. make the methods
+10. test test and more testing
+11. validations
+12. omniauth
+13. refactor to make sure its DRY
+14. make video and blog post
+15. submit

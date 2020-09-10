@@ -1,10 +1,12 @@
 fields
-:integer user_id
-:integer character_id
+:integer wave_amount
+:integer enemy_amount
+t.integer :user_id
+t.integer :character_id
 
 associations
-has_many Users through worlds
-has_many Characters
+belongs_to Users
+Belongs_to Character
 has_many Mercents
 has_many Enemies
 has_many Bosses

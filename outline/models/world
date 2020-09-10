@@ -1,9 +1,0 @@
-fields
-:string name
-:integer waves
-:integer user_id
-:integer game_id
-
-associations
-belongs_to game
-belongs_to user
