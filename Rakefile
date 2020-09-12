@@ -1,4 +1,4 @@
-require "bundler/gem_tasks"
+# require "bundler/gem_tasks"
 task :default => :spec
 
 # Add your own tasks in files placed in lib/tasks ending in .rake,
