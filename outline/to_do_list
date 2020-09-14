@@ -1,11 +1,13 @@
         Done
 1. generate tables for models
 2. hook up model associations
-
-        Not Done
 3. create routes
 4. create controllers
+
+        Not Done
 5. create views for user submitted data
+ change merchant table to belong to a game
+ give characters and merchants background
 6. test the flow of the web pages
 7. make seed data
 8. brainstorm about the necessary methods
