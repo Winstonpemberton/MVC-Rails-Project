@@ -4,6 +4,8 @@ class CreateArmors < ActiveRecord::Migration[6.0]
       t.string :name
       t.integer :armor_raiting
       t.string :image_url
+      t.integer :inventory_id
+      t.integer :merchant_id
 
       t.timestamps
     end

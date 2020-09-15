@@ -16,6 +16,8 @@ ActiveRecord::Schema.define(version: 2020_09_10_225528) do
     t.string "name"
     t.integer "armor_raiting"
     t.string "image_url"
+    t.integer "inventory_id"
+    t.integer "merchant_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -66,10 +68,7 @@ ActiveRecord::Schema.define(version: 2020_09_10_225528) do
     t.string "name"
     t.string "saying"
     t.string "image_url"
-    t.integer "inventory_id"
-    t.integer "weapon_id"
-    t.integer "armor_id"
-    t.integer "potion_id"
+    t.integer "game_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -78,6 +77,8 @@ ActiveRecord::Schema.define(version: 2020_09_10_225528) do
     t.string "name"
     t.integer "heal_amount"
     t.string "image_url"
+    t.integer "inventory_id"
+    t.integer "merchant_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -93,6 +94,8 @@ ActiveRecord::Schema.define(version: 2020_09_10_225528) do
     t.string "name"
     t.integer "damage"
     t.string "image_url"
+    t.integer "inventory_id"
+    t.integer "merchant_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

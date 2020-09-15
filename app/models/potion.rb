@@ -1,4 +1,4 @@
 class Potion < ApplicationRecord
-  has_many :merchents
-  has_many :inventories, through: :merchents
+  belongs_to :inventory
+  belongs_to :merchent
 end

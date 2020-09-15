@@ -4,7 +4,8 @@ class CreatePotions < ActiveRecord::Migration[6.0]
       t.string :name
       t.integer :heal_amount
       t.string :image_url
-
+      t.integer :inventory_id
+      t.integer :merchant_id
 
       t.timestamps
     end

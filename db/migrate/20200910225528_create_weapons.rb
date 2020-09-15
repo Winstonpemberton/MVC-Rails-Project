@@ -4,6 +4,8 @@ class CreateWeapons < ActiveRecord::Migration[6.0]
       t.string :name
       t.integer :damage
       t.string :image_url
+      t.integer :inventory_id
+      t.integer :merchant_id
 
       t.timestamps
     end
