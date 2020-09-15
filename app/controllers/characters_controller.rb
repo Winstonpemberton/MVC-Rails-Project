@@ -1,6 +1,7 @@
 class CharactersController < ApplicationController
   def index
-    @character = Character.all
+
+    @characters = current_user.characters
   end
 
   def show
@@ -19,6 +20,10 @@ class CharactersController < ApplicationController
     else
       render :new
     end
+  end
+
+  def character_info
+    @character = Character.find(params[:id])
   end
 
   def edit
@@ -47,6 +52,6 @@ class CharactersController < ApplicationController
   private
 
   def character_params
-    params.require(:character).permit(:name)
+    params.require(:character).permit(:name, :background)
   end
 end

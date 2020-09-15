@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   validates :name, presence: true
 
-  has_many :games
-  has_many :characters, through: :games
+  has_many :characters
+  has_many :games, through: :characters
 end

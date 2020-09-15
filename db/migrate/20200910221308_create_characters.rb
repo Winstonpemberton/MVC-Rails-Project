@@ -6,6 +6,8 @@ class CreateCharacters < ActiveRecord::Migration[6.0]
       t.integer :health
       t.string :image_url
       t.string :background
+      t.integer :user_id
+      t.integer :game_id
 
       t.timestamps
     end

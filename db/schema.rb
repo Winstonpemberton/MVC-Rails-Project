@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 2020_09_10_225528) do
     t.integer "health"
     t.string "image_url"
     t.string "background"
+    t.integer "user_id"
+    t.integer "game_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -51,10 +53,6 @@ ActiveRecord::Schema.define(version: 2020_09_10_225528) do
   end
 
   create_table "games", force: :cascade do |t|
-    t.integer "wave_amount"
-    t.integer "enemy_amount"
-    t.integer "user_id"
-    t.integer "character_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

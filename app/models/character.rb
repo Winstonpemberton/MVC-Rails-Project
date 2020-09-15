@@ -1,5 +1,5 @@
 class Character < ApplicationRecord
-  has_many :games
-  has_many :users, through: :games
+  belongs_to :game
+  belongs_to :user
   has_many :inventories
 end
