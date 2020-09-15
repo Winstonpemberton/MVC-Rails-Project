@@ -14,10 +14,13 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game = Game.new(game_params)
+    @game = Game.create
 
-    if @game.save
-      redirect_to @game
+    if current_user
+      @character = Character.create(user_id: current_user.id, game_id: @game.id, character_params)
+      @merchant = Merchant.create( game_id: @game.id, merchant_params)
+      @merchant.assign_wares
+      redirect_to @character
     else
       render :new
     end
@@ -27,13 +30,17 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     @game.destroy
     flash[:notice] = "Game deleted."
-    redirect_to games_path
+    redirect_to user_path
   end
 
   private
 
-  def game_params
-    params.require(:game).permit(:name)
+  def character_params
+    params.require(:character).permit(:name)
+  end
+
+  def merchant_params
+    params.require(:merchant).permit(:name)
   end
 
 end

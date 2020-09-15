@@ -5,6 +5,7 @@ class CreateCharacters < ActiveRecord::Migration[6.0]
       t.integer :gold
       t.integer :health
       t.string :image_url
+      t.string :background
 
       t.timestamps
     end

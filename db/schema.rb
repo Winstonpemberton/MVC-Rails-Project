@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2020_09_10_225528) do
     t.integer "gold"
     t.integer "health"
     t.string "image_url"
+    t.string "background"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

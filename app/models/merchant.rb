@@ -1,4 +1,5 @@
 class Merchant < ApplicationRecord
+  belongs_to :game
 
   has_many :weapons
   has_many :inventories, through: :weapons
@@ -9,8 +10,18 @@ class Merchant < ApplicationRecord
   has_many :potions
   has_many :inventories, through: :potions
 
-  belongs_to :inventory
-  belongs_to :weapon
-  belongs_to :armor
-  belongs_to :potion
+  def assign_wares
+    all_wares.each do |item|
+      item.merchant_id = self.id
+    end
+  end
+
+  def all_wares
+    Array.new.tap |wares|
+      wares << Weapons.all
+      wares << Armor.all
+      wares << Potions.all
+    end
+  end
+
 end
