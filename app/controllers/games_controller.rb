@@ -7,6 +7,18 @@ class GamesController < ApplicationController
 
   def battle
     @game = Game.find(params[:id])
+    @enemy = Enemy.find(1)
+  end
+
+  def boss_battle
+    @game = Game.find(params[:id])
+    @boss = Boss.find(1)
+  end
+
+  def win
+  end
+
+  def lose
   end
 
   def update_battle
