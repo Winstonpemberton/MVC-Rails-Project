@@ -26,6 +26,10 @@ class CharactersController < ApplicationController
     @character = Character.find(params[:id])
   end
 
+  def character_picture
+    @character = Character.find(params[:id])
+  end
+
   def edit
     @character = Character.find(params[:id])
   end

@@ -13,6 +13,7 @@ class Merchant < ApplicationRecord
   def build_merchant
     assign_wares
     assign_merchant_image
+    merchant_sayings
   end
 
   def assign_wares
@@ -39,7 +40,18 @@ class Merchant < ApplicationRecord
         self.image_url =
       else
         "Error"
-      end
+    end
   end
+
+  def merchant_sayings
+    self.saying = ["Anaria shola. (Speak your business.)","Bal'a dash, malanore. (Greetings, traveler.)"
+,"We will persevere!","Our enemies will fall!","Victory lies ahead!"
+,"Anu belore dela'na. (The sun guides us.)","What business have you?",
+"Glory to the sin'dorei.","Yes?","State your business.","The eternal sun guides us.",
+"The dark times will pass."]
+
+  end
+
+
 
 end
