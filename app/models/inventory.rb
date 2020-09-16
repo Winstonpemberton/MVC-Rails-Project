@@ -9,4 +9,5 @@ class Inventory < ApplicationRecord
 
   has_many :potions
   has_many :merchants, through: :potions
+
 end

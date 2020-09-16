@@ -1,11 +1,15 @@
 class CharactersController < ApplicationController
   def index
-
     @characters = current_user.characters
   end
 
   def show
     @character = Character.find(params[:id])
+  end
+
+  def inventory
+    @character = Character.find(params[:id])
+    @inventory = @character.inventory
   end
 
   def new
