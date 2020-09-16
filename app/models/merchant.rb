@@ -10,6 +10,11 @@ class Merchant < ApplicationRecord
   has_many :potions
   has_many :inventories, through: :potions
 
+  def build_merchant
+    assign_wares
+    assign_merchant_image
+  end
+
   def assign_wares
     all_wares.each do |item|
       item.merchant_id = self.id
@@ -22,6 +27,19 @@ class Merchant < ApplicationRecord
       wares << Armor.all
       wares << Potions.all
     end
+  end
+
+  def assign_merchant_image
+    case self.gender
+      when 1
+        self.image_url =
+      when 2
+        self.image_url =
+      when 3
+        self.image_url =
+      else
+        "Error"
+      end
   end
 
 end

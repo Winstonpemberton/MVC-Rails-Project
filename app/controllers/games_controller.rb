@@ -19,7 +19,7 @@ class GamesController < ApplicationController
     if current_user
       @character = Character.create(user_id: current_user.id, game_id: @game.id, character_params)
       @merchant = Merchant.create( game_id: @game.id, merchant_params)
-      @merchant.assign_wares
+      @merchant.build_merchant
       redirect_to @character
     else
       render :new

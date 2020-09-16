@@ -3,6 +3,8 @@
 <%= form_tag("/create", method: "post") do %>
   <p> Name your game's merchant: <%= text_field_tag :merchant_name %></p>
   <p> Give them a background: <%= text_field_tag :merchant_background %></p>
+  <p> Please select the gender of your merchant </p>
+  <%= options_for_select([['male', 1], ['female', 2], ['A being beyong comprehension', 3]]) %>
 
   <p> Name your character: <%= text_field_tag :character_name %></p>
   <p> Give them a background: <%= text_field_tag :character_background %></p>
