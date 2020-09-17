@@ -29,7 +29,7 @@ class GamesController < ApplicationController
     @game = Game.create
 
     if current_user
-      @character = Character.create(user_id: current_user.id, game_id: @game.id, character_params)
+      @character = Character.create(user_id: current_user.id, game_id: @game.id,:health 50, character_params)
       Inventory.create(character_id: @character.id)
       @merchant = Merchant.create( game_id: @game.id, merchant_params)
       @merchant.build_merchant
