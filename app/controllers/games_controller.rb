@@ -5,6 +5,10 @@ class GamesController < ApplicationController
     @game = Game.new
   end
 
+  def show
+    @game = Game.find(params[:id])
+  end
+
   def battle
     @game = Game.find(params[:id])
     @enemy = Enemy.find(1)

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root "session#new"
 
   resources :users, only: [:show, :new, :create, :edit, :update] do
-    resources :games, only: [:new, :create, :delete]
+    resources :games, only: [:new, :create, :show, :delete]
     resources :characters
   end
 
@@ -24,5 +24,5 @@ Rails.application.routes.draw do
 
   get '/signin', to: 'session#new'
   post '/signin', to: 'session#create'
-  delete '/logout', to: 'session#destroy'
+  delete '/signout', to: 'session#destroy'
 end
