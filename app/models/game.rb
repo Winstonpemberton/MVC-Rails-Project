@@ -5,4 +5,9 @@ class Game < ApplicationRecord
 
   has_many :characters
   has_many :users, through: :characters
+
+  def current_character(character)
+    character
+  end
+
 end

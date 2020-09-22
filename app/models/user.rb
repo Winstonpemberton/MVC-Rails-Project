@@ -3,4 +3,8 @@ class User < ApplicationRecord
 
   has_many :characters
   has_many :games, through: :characters
+
+  def find_current_game(game)
+    game
+  end
 end
