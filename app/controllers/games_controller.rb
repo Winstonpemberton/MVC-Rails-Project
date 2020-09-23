@@ -7,6 +7,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    current_user.set_current_game(@game)
   end
 
   def battle
@@ -31,12 +32,12 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.create
-    current_user.find_current_game(@game)
+    current_user.set_current_game(@game)
 
     if current_user
       @character = Character.create(user_id: current_user.id, game_id: @game.id,:health 50, character_params)
       Inventory.create(character_id: @character.id)
-      @game.find_current_character(@character)
+      @game.set_current_character(@character)
       @merchant = Merchant.create( game_id: @game.id, merchant_params)
       @merchant.build_merchant
       redirect_to @character
