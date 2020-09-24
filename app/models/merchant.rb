@@ -53,9 +53,21 @@ class Merchant < ApplicationRecord
 
   def buy_item (item, character)
 
-
+    if item.invetory != character.invetory
+      if character.gold > item.cost
+        item_transaction(item, character)
+        "you bought #{item.name}!"
+      else
+        "you don't have enough money"
+      end
+    else
+      "Your character already has this item in their invetory"
+    end
   end
 
-
+  def item_transaction(item, character)
+    item.invetory = character.invetory
+    character.update(:gold => (character.gold - item.cost))
+  end
 
 end

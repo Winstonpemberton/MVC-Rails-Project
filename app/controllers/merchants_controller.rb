@@ -13,9 +13,9 @@ class MerchantsController < ApplicationController
     if merchant
       response = merchant.buy_item(item, current_character)
       flash[:notice] = response
-      redirect_to user_path(ride.user)
+      redirect_to user_character_path(current_character)
     else
-      redirect_to attraction_path(ride.attraction)
+      redirect_to merchant_path(@merchant)
     end
   end
 

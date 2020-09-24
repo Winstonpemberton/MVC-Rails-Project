@@ -3,18 +3,17 @@
 2. hook up model associations
 3. create routes
 4. create controllers
+5. create views for user submitted data
+7. make seed data
 
         Not Done
-5. create views for user submitted data
- change merchant table to belong to a game
- give characters and merchants background
 6. test the flow of the web pages
-7. make seed data
 8. brainstorm about the necessary methods
 9. make the methods
-10. test test and more testing
-11. validations
-12. omniauth
-13. refactor to make sure its DRY
-14. make video and blog post
-15. submit
+10. figure out what a scope method is
+11. test test and more testing
+12. validations
+13. omniauth
+14. refactor to make sure its DRY
+15. make video and blog post
+16. submit
