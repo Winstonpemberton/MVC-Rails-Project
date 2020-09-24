@@ -5,16 +5,35 @@
 Weapons
 <% @merchant.weapons.each do |weapon| %>
   <%= link_to "#{weapon.name}", weapon_path(weapon) %>
+
+  <%= form_tag("/buy_item", method: "post") do %>
+    <%= hidden_field_tag :weapon_id, weapon.id %>
+    <%= hidden_field_tag :merchant_id, merchant.id %>
+    <%= button_tag "Buy Item" %>
+  <% end %>
+
 <%end%>
 
 Armors
 <% @merchant.armors.each do |armor| %>
   <%= link_to "#{armor.name}", armor_path(armor) %>
+
+  <%= form_tag("/buy_item", method: "post") do %>
+    <%= hidden_field_tag :armor_id, armor.id %>
+    <%= hidden_field_tag :merchant_id, merchant.id %>
+    <%= button_tag "Buy Item" %>
+  <% end %>
 <%end%>
 
 Potions
 <% @merchant.potions.each do |potion| %>
   <%= link_to "#{potion.name}", potion_path(potion) %>
+
+  <%= form_tag("/buy_item", method: "post") do %>
+    <%= hidden_field_tag :potion_id, potion.id %>
+    <%= hidden_field_tag :merchant_id, merchant.id %>
+    <%= button_tag "Buy Item" %>
+  <% end %>
 <%end%>
 
 like to fight battle

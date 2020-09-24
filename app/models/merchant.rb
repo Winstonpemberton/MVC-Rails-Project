@@ -49,6 +49,9 @@ class Merchant < ApplicationRecord
 ,"Anu belore dela'na. (The sun guides us.)","What business have you?",
 "Glory to the sin'dorei.","Yes?","State your business.","The eternal sun guides us.",
 "The dark times will pass."]
+  end
+
+  def buy_item (item, inventory)
 
   end
 
