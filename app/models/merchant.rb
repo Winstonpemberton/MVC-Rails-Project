@@ -51,7 +51,8 @@ class Merchant < ApplicationRecord
 "The dark times will pass."]
   end
 
-  def buy_item (item, inventory)
+  def buy_item (item, character)
+
 
   end
 

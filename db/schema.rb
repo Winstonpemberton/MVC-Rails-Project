@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2020_09_17_220235) do
   create_table "armors", force: :cascade do |t|
     t.string "name"
     t.integer "armor_raiting"
+    t.integer "cost"
     t.string "image_url"
     t.integer "inventory_id"
     t.integer "merchant_id"
@@ -97,6 +98,7 @@ ActiveRecord::Schema.define(version: 2020_09_17_220235) do
   create_table "potions", force: :cascade do |t|
     t.string "name"
     t.integer "heal_amount"
+    t.integer "cost"
     t.string "image_url"
     t.integer "inventory_id"
     t.integer "merchant_id"
@@ -114,6 +116,7 @@ ActiveRecord::Schema.define(version: 2020_09_17_220235) do
   create_table "weapons", force: :cascade do |t|
     t.string "name"
     t.integer "damage"
+    t.integer "cost"
     t.string "image_url"
     t.integer "inventory_id"
     t.integer "merchant_id"

@@ -9,10 +9,9 @@ class MerchantsController < ApplicationController
     item = Weapon.find(params[:weapon_id]) if != nil
     item = Armor.find(params[:armor_id]) if != nil
     item = Weapon.find(params[:potion_id]) if != nil
-    inventory = current_user.inventory
 
     if merchant
-      response = merchant.buy_item(item, inventory)
+      response = merchant.buy_item(item, current_character)
       flash[:notice] = response
       redirect_to user_path(ride.user)
     else
