@@ -4,3 +4,7 @@ show character picture
 choose character picture
 change character info
 delete character
+
+<%=@character.name%>
+<%=@character.background%>
+<%= link_to "Update character", edit_user_character_path(@character) %>
