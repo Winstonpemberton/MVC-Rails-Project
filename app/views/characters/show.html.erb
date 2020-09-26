@@ -2,3 +2,8 @@ show inventory
 go to merchant
 fight enemies
 fight boss
+
+<%= link_to "Character Inventory", character_inventory_path(@character) %>
+<%= link_to "Go To Merchant", merchant_path(@game.merchant) %>
+<%= link_to "Fight Enemies", battle_path %>
+<%= link_to "Fight Boss", boss_path %>

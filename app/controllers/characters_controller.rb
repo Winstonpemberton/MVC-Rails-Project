@@ -6,6 +6,7 @@ class CharactersController < ApplicationController
   def show
     @character = Character.find(params[:id])
     current_game.set_current_character(@character)
+    @game = current_game
   end
 
   def inventory
@@ -29,7 +30,7 @@ class CharactersController < ApplicationController
   end
 
   def character_info
-    @character = Character.find(params[:id])
+    @character = current_character
   end
 
   def character_picture
