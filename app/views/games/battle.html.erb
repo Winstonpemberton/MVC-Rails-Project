@@ -1,7 +1,26 @@
 show enemy picture
 show enemy health
 show enemy name
+<%=@enemy.name%>
+<%=@enemy.image%>
+<%=@enemy.health%>
+<br>
+<br>
+<br>
 
+<%=@character.health%>
+
+
+<%= form_tag("/update_battle", method: "post") do %>
+  <%= hidden_field_tag :enemy_id, @enemy.id %>
+  <%= hidden_field_tag :character_id, @character.id %>
+  <%= button_tag "Attack" %>
+<% end %>
+
+<%= form_tag("/use_potion", method: "post") do %>
+  <%= hidden_field_tag :character_id, @character.id %>
+  <%= button_tag "Use Potion" %>
+<% end %>
 
 show character health
 attack
