@@ -1,11 +1,21 @@
-show boss picture
-show boss health
-show boss name
+
+<%=@boss.name%>
+<%=@boss.image%>
+<%=@boss.health%>
+<br>
+<br>
+<br>
+
+<%=@character.health%>
 
 
-show character health
-attack
-heal
+<%= form_tag("/update_battle", method: "post") do %>
+  <%= hidden_field_tag :boss_id, @boss.id %>
+  <%= hidden_field_tag :character_id, @character.id %>
+  <%= button_tag "Attack" %>
+<% end %>
 
-if boss health is zero go to win page
-if character health is zero go to lose page
+<%= form_tag("/use_potion", method: "post") do %>
+  <%= hidden_field_tag :character_id, @character.id %>
+  <%= button_tag "Use Potion" %>
+<% end %>

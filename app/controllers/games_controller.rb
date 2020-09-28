@@ -16,12 +16,17 @@ class GamesController < ApplicationController
   end
 
   def use_potion
-
+    character = Character.find(params[:character_id])
+    if character
+      character.use_potion
+    else
+      redirect_to battle_path
+    end
   end
 
   def boss_battle
-    @game = Game.find(params[:id])
-    @boss = Boss.find(1)
+    @enemy = Boss.create(name: "Super Big Bad Demon", damage: 50, health: 60)
+    @character = current_character
   end
 
   def win
@@ -32,16 +37,19 @@ class GamesController < ApplicationController
 
   def update_battle
     character = Character.find(params[:character_id])
-    enemy = Enemy.find(params[:enemy_id])
+    enemy = Enemy.find(params[:enemy_id])if != nil
+    enemy = Boss.find(params[:boss_id]) if != nil
 
     if character
       character.attack(enemy)
-
       if enemy.health > 0
         redirect_to battle_path
       end
       if character.health < 0
         redirect_to lose_path
+      end
+      if enemy.name == "Super Big Bad Demon" || enemy.health == 0
+        redirect_to win_path
       end
     else
       redirect_to user_character_path(current_character)
