@@ -66,7 +66,7 @@ class Merchant < ApplicationRecord
   end
 
   def item_transaction(item, character)
-    item.invetory = character.invetory
+    character.invetory << item
     character.update(:gold => (character.gold - item.cost))
   end
 

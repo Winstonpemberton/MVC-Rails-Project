@@ -35,11 +35,16 @@ class GamesController < ApplicationController
     enemy = Enemy.find(params[:enemy_id])
 
     if character
-      response = character.attack(enemy)
-      flash[:notice] = response
-      redirect_to user_character_path(current_character)
+      character.attack(enemy)
+
+      if enemy.health > 0
+        redirect_to battle_path
+      end
+      if character.health < 0
+        redirect_to lose_path
+      end
     else
-      redirect_to merchant_path(@merchant)
+      redirect_to user_character_path(current_character)
     end
   end
 
