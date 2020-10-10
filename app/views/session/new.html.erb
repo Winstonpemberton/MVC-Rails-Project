@@ -4,4 +4,8 @@
 
   <p>Password: <%= password_field_tag :password %></p>
   <%= submit_tag "Sign In" %>
+
+  <%= link_to(controller: 'users', action: 'new') { 'sign up' } %>
 <% end %>
+
+
