@@ -4,15 +4,16 @@ class Character < ApplicationRecord
   has_many :inventories
 
   def attack(enemy)
-    weapon = character.invetory.weapons.last
-    armor = character.invetory.armor.last
-    enemy.update (:health => (enemy.health - weapon.damage))
-    character.update(:health => (character.health - (enemy.damage - armor.armor_rating))
-                    :gold => (character.gold + 15))
+    weapon = self.invetory.weapons.last
+    armor = self.invetory.armor.last
+
+    enemy.update(:health => (enemy.health - weapon.damage))
+    self.update(:health => (self.health - (enemy.damage - armor.armor_rating)),
+                    :gold => (self.gold + 15))
   end
 
   def use_potion
-    potion = character.invetory.potions.last
-    character.update(:health => (character.health + potion.heal_amount))
+    potion = self.invetory.potions.last
+    self.update(:health => (self.health + potion.heal_amount))
   end
 end
