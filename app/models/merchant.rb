@@ -16,6 +16,10 @@ class Merchant < ApplicationRecord
     merchant_sayings
   end
 
+  def genders
+    ['male','female','A being beyong comprehension']
+  end
+
   def assign_wares
     all_wares.each do |item|
       item.merchant_id = self.id
@@ -27,28 +31,23 @@ class Merchant < ApplicationRecord
       wares << Weapons.all
       wares << Armor.all
       wares << Potions.all
-    end
   end
 
-  def assign_merchant_image
-    case self.gender
-      when 1
-        self.image_url =
-      when 2
-        self.image_url =
-      when 3
-        self.image_url =
-      else
-        "Error"
-    end
-  end
+  # def assign_merchant_image
+  #   case self.gender
+  #     when 1
+  #       self.image_url =
+  #     when 2
+  #       self.image_url =
+  #     when 3
+  #       self.image_url =
+  #     else
+  #       "Error"
+  #   end
+  # end
 
   def merchant_sayings
-    self.saying = ["Anaria shola. (Speak your business.)","Bal'a dash, malanore. (Greetings, traveler.)"
-,"We will persevere!","Our enemies will fall!","Victory lies ahead!"
-,"Anu belore dela'na. (The sun guides us.)","What business have you?",
-"Glory to the sin'dorei.","Yes?","State your business.","The eternal sun guides us.",
-"The dark times will pass."]
+    self.saying = ["Anaria shola. (Speak your business.)", "Bal'a dash, malanore. (Greetings, traveler.)", "We will persevere!", "Our enemies will fall!", "Victory lies ahead!", "Anu belore dela'na. (The sun guides us.)","What business have you?", "Glory to the sin'dorei.","Yes?","State your business.","The eternal sun guides us.","The dark times will pass."]
   end
 
   def buy_item (item, character)

@@ -3,6 +3,7 @@ class GamesController < ApplicationController
 
   def new
     @game = Game.new
+    @merchant = Merchant.new 
   end
 
   def show
@@ -37,8 +38,8 @@ class GamesController < ApplicationController
 
   def update_battle
     character = Character.find(params[:character_id])
-    enemy = Enemy.find(params[:enemy_id])if != nil
-    enemy = Boss.find(params[:boss_id]) if != nil
+    enemy = Enemy.find(params[:enemy_id]).present?
+    enemy = Boss.find(params[:boss_id]).present?
 
     if character
       character.attack(enemy)
@@ -61,10 +62,12 @@ class GamesController < ApplicationController
     current_user.set_current_game(@game)
 
     if current_user
-      @character = Character.create(user_id: current_user.id, game_id: @game.id,health: 50, character_params)
+      @character = Character.create(user_id: current_user.id, game_id: @game.id, health: 50)
+      @character.update(character_params)
       Inventory.create(character_id: @character.id)
       @game.set_current_character(@character)
-      @merchant = Merchant.create( game_id: @game.id, merchant_params)
+      @merchant = Merchant.create(game_id: @game.id)
+      @merchant.update(merchant_params)
       @merchant.build_merchant
       redirect_to @character
     else
