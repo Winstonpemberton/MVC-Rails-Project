@@ -62,8 +62,8 @@ class GamesController < ApplicationController
     current_user.set_current_game(@game)
 
     if current_user
-      @character = Character.create(user_id: current_user.id, game_id: @game.id, health: 50)
-      @character.update(character_params)
+      @character = Character.create(character_params)
+      @character.update(user_id: current_user.id, game_id: @game.id, health: 50)
       Inventory.create(character_id: @character.id)
       @game.set_current_character(@character)
       @merchant = Merchant.create(game_id: @game.id)
@@ -85,11 +85,11 @@ class GamesController < ApplicationController
   private
 
   def character_params
-    params.require(:character).permit(:merchant_name, :merchant_background)
+    params.require(:character).permit(:character_name, :character_background)
   end
 
   def merchant_params
-    params.require(:merchant).permit(:character_name, :character_background)
+    params.require(:merchant).permit(:merchant_name, :merchant_background, :gender)
   end
 
 end
