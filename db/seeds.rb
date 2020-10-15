@@ -5,18 +5,20 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+merchant = Mercant.create
+inventory = Inventory.create 
 
-@weapon1 = Weapon.create(name: 'Steel Sword', damage: 8, cost: 10)
-@weapon1.picture.attach(io: File.open('app/assets/images/weapons/steel sword.PNG'),
-filename: 'steel sword.PNG')
+Weapon.create!(name: 'Steel Sword', damage: 8, cost: 10, :merchant_id = merchant.id, :inventory_id = inventory.id)
+# @weapon1.picture.attach(io: File.open('app/assets/images/weapons/steel sword.PNG'),
+# filename: 'steel sword.PNG')
 
-@weapon2 = Weapon.create(name: 'Orcish Sword', damage: 15, cost: 15 )
-@weapon2.picture.attach(io: File.open('app/assets/images/weapons/orcish sword.PNG'),
-filename: 'orcish sword.PNG')
+# @weapon2 = Weapon.create(name: 'Orcish Sword', damage: 15, cost: 15 )
+# @weapon2.picture.attach(io: File.open('app/assets/images/weapons/orcish sword.PNG'),
+# filename: 'orcish sword.PNG')
 
-@weapon3 = Weapon.create(name: 'Dawnbreaker', damage: 25, cost: 30 )
-@weapon3.picture.attach(io: File.open('app/assets/images/weapons/dawnbreaker.PNG'),
-filename: 'dawnbreaker.PNG')
+# @weapon3 = Weapon.create(name: 'Dawnbreaker', damage: 25, cost: 30 )
+# @weapon3.picture.attach(io: File.open('app/assets/images/weapons/dawnbreaker.PNG'),
+# filename: 'dawnbreaker.PNG')
 #
 # Armor.create(name: 'Light Armor', armor_raiting: 5 )
 # Armor.create(name: 'Medium Armor', armor_raiting: 10 )

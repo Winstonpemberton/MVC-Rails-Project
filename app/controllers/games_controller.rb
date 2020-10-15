@@ -85,11 +85,11 @@ class GamesController < ApplicationController
   private
 
   def character_params
-    params.require(:character).permit(:character_name, :character_background)
+    params.require(:character).permit(character:[:name], character:[:background])
   end
 
   def merchant_params
-    params.require(:merchant).permit(:merchant_name, :merchant_background, :gender)
+    params.require(:merchant).permit(merchant:[:name], merchant:[:background], merchant:[:gender])
   end
 
 end

@@ -27,10 +27,11 @@ class Merchant < ApplicationRecord
   end
 
   def all_wares
-    Array.new.tap |wares|
-      wares << Weapons.all
-      wares << Armor.all
-      wares << Potions.all
+    wares = []
+    wares << Weapon.all
+    wares << Armor.all
+    wares << Potion.all
+    wares
   end
 
   # def assign_merchant_image
