@@ -6,7 +6,7 @@ class Game < ApplicationRecord
   has_many :characters
   has_many :users, through: :characters
 
-  def sest_current_character(character)
+  def set_current_character(character)
     character
   end
 

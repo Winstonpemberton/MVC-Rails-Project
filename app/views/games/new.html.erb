@@ -1,18 +1,15 @@
 <h2>New Game</h2>
 
 <%= form_tag user_games_path do %>
-  <%= form_with model: @merchant do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %><br />
 
-  <p> Name your game's merchant: <%= text_field_tag :merchant_name %></p>
-  <p> Give them a background: <%= text_field_tag :merchant_background %></p>
+  <p> Name your game's merchant: <%= text_field_tag "merchant[name]" %></p>
+  <p> Give them a background: <%= text_field_tag "merchant[background]" %></p>
   <p> Please select the gender of your merchant </p>
   <%= select(:merchant, :gender, @merchant.genders, options ={:prompt => "Select a gender"}, :class =>"gender") %>
   
 
-  <p> Name your character: <%= text_field_tag :character_name %></p>
-  <p> Give them a background: <%= text_field_tag :character_background %></p>
+  <p> Name your character: <%= text_field_tag "character[name]" %></p>
+  <p> Give them a background: <%= text_field_tag "character[background]" %></p>
 
   <%= submit_tag "Start New Game" %>
 <% end %>
