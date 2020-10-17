@@ -11,7 +11,7 @@
 
   <body>
 
-    <%= link_to "Sign out", signout_path %>
+    <%=link_to 'Sign out', signout_path, :method => :delete%>
     <%= yield %>
   </body>
 </html>
