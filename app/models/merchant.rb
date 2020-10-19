@@ -2,13 +2,8 @@ class Merchant < ApplicationRecord
   belongs_to :game
 
   has_many :weapons
-  has_many :inventories, through: :weapons
-
   has_many :armors
-  has_many :inventories, through: :armors
-
   has_many :potions
-  has_many :inventories, through: :potions
 
   def build_merchant
     assign_wares

@@ -1,6 +1,6 @@
 <h2><%=@user.name%></h2>
 <% @user.games.each_with_index do |game, index| %>
-  <%= link_to "Game #{index}", game_path(game) %>
+  <%= link_to "Game #{index}", user_game_path(game) %>
 <%end %>
 
 <h3>Create new game</h3>
