@@ -5,10 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-merchant = Mercant.create
+merchant = Merchant.create
 inventory = Inventory.create 
 
-Weapon.create!(name: 'Steel Sword', damage: 8, cost: 10, :merchant_id = merchant.id, :inventory_id = inventory.id)
+Weapon.create(name: 'Steel Sword', damage: 8, cost: 10, :merchant_id => merchant.id, :inventory_id => inventory.id)
 # @weapon1.picture.attach(io: File.open('app/assets/images/weapons/steel sword.PNG'),
 # filename: 'steel sword.PNG')
 
