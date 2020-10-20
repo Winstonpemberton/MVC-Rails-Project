@@ -6,8 +6,9 @@ class Merchant < ApplicationRecord
   has_many :potions
 
   def build_merchant
-    assign_wares
-    assign_merchant_image
+    # assign_wares
+    create_weapons 
+    # assign_merchant_image
     merchant_sayings
   end
 
@@ -15,10 +16,24 @@ class Merchant < ApplicationRecord
     ['male','female','A being beyong comprehension']
   end
 
-  def assign_wares
-    all_wares.each do |item|
-      item.merchant_id = self.id
-    end
+  # def assign_wares
+  #   all_wares.each do |item|
+  #     item.merchant_id = self.id
+  #   end
+  # end
+
+  def create_weapons 
+    weapon = Weapon.create(name: 'Steel Sword', damage: 8, cost: 10, :merchant_id => self.id)
+    weapon.picture.attach(io: File.open('app/assets/images/weapons/steel sword.PNG'),
+    filename: 'steel sword.PNG')
+
+    weapon1 = Weapon.create(name: 'Orcish Sword', damage: 15, cost: 15, :merchant_id => self.id )
+    weapon1.picture.attach(io: File.open('app/assets/images/weapons/orcish sword.PNG'),
+    filename: 'orcish sword.PNG')
+
+    weapon2 = Weapon.create(name: 'Dawnbreaker', damage: 25, cost: 30, :merchant_id => self.id )
+    weapon2.picture.attach(io: File.open('app/assets/images/weapons/dawnbreaker.PNG'),
+    filename: 'dawnbreaker.PNG')
   end
 
   def all_wares
@@ -28,6 +43,8 @@ class Merchant < ApplicationRecord
     wares << Potion.all
     wares
   end
+
+
 
   # def assign_merchant_image
   #   case self.gender

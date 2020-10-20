@@ -3,8 +3,7 @@ class Character < ApplicationRecord
   belongs_to :user
   has_many :inventories
   
-  has_many :enemies
-  has_many :games, through: :enemies 
+
   
   def attack(enemy)
     weapon = self.invetory.weapons.last

@@ -20,7 +20,8 @@ class CharactersController < ApplicationController
 
   def create
     #figure out how to set game id since @game won't work
-    @character = Character.create(user_id: current_user.id, game_id: current_game.id,:health 50, character_params)
+    @character = Character.create(character_params)
+    @character.update(user_id: current_user.id, game_id: @game.id, health: 50)
     if @character.save
       current_game.set_current_character(@character)
       redirect_to @character

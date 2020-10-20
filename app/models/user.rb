@@ -5,6 +5,9 @@ class User < ApplicationRecord
   has_many :characters
   has_many :games, through: :characters
 
+  has_many :npcs
+  has_many :games, through: :npcs
+
   def set_current_game(game)
     game
   end
