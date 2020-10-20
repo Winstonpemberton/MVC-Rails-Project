@@ -59,7 +59,7 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.create
-    current_user.set_current_game(@game)
+    # current_user.set_current_game(@game)
 
     if current_user
       @character = Character.create(character_params)

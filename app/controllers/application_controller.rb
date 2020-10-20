@@ -8,13 +8,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def current_game
-    current_user.set_current_game
-  end
+  # def current_game
+  #   current_user.set_current_game
+  # end
 
-  def current_character
-    current_game.set_current_character
-  end
+  # def current_character
+  #   current_game.set_current_character
+  # end
 
   def require_login
     unless current_user

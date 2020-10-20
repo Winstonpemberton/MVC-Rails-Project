@@ -5,8 +5,8 @@ class CharactersController < ApplicationController
 
   def show
     @character = Character.find(params[:id])
-    current_game.set_current_character(@character)
-    @game = current_game
+    # current_game.set_current_character(@character)
+    @game = @character.game
   end
 
   def inventory
@@ -23,7 +23,7 @@ class CharactersController < ApplicationController
     @character = Character.create(character_params)
     @character.update(user_id: current_user.id, game_id: @game.id, health: 50)
     if @character.save
-      current_game.set_current_character(@character)
+      # current_game.set_current_character(@character)
       redirect_to @character
     else
       render :new
@@ -31,7 +31,7 @@ class CharactersController < ApplicationController
   end
 
   def character_info
-    @character = current_character
+    @character = Character.find(params[:id])
   end
 
   def character_picture
