@@ -1,17 +1,18 @@
 Weapons
 <% @inventory.weapons.each do |weapon| %>
   <%= link_to "#{weapon.name}", weapon_path(weapon) %>
-<%end%>
+<%end%><br>
 
 Armors
 <% @inventory.armors.each do |armor| %>
   <%= link_to "#{armor.name}", armor_path(armor) %>
-<%end%>
+<%end%><br>
 
 Potions
 <% @inventory.potions.each do |potion| %>
   <%= link_to "#{potion.name}", potion_path(potion) %>
-<%end%>
+<%end%><br>
 
 like to fight battle
+link to character inventory
 link to character show

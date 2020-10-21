@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get '/character_info', to: 'character#character_info'
   get '/boss', to: 'game#boss_battle'
 
+
   get '/signin', to: 'session#new'
   post '/signin', to: 'session#create'
   delete '/signout', to: 'session#destroy'
