@@ -15,6 +15,7 @@ class CharactersController < ApplicationController
   end
 
   def new
+    @user = current_user
     @character = Character.new
   end
 
@@ -39,13 +40,13 @@ class CharactersController < ApplicationController
   end
 
   def edit
+    @user = current_user
     @character = Character.find(params[:id])
   end
 
   def update
     @character = Character.find(params[:id])
     @character.update(character_params)
-    current_game.set_current_character(@character)
     if @character.save
       redirect_to @character
     else

@@ -22,7 +22,6 @@ Rails.application.routes.draw do
     resources :potions, only: [:show, :index ]
   end
 
-  get '/character_info', to: 'character#character_info'
   get '/boss', to: 'game#boss_battle'
 
 
