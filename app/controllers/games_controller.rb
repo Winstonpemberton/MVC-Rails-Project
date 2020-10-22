@@ -8,13 +8,14 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    current_user.set_current_game(@game)
+    @enemy = Enemy.create(name: "Big Bad Demon", damage: 5, health: 20)
+    @character = @game.characters.last
   end
 
-  def battle
-    @enemy = Enemy.create(name: "Big Bad Demon", damage: 5, health: 20)
-    @character = current_character
-  end
+  # def battle
+  #   @enemy = Enemy.create(name: "Big Bad Demon", damage: 5, health: 20)
+  #   @game = Game.find(params[:id])
+  # end
 
   def use_potion
     character = Character.find(params[:character_id])

@@ -1,7 +1,33 @@
-<h2><%=@user.name%></h2>
-<% @game.characters.each do |character| %>
-  <%= link_to "#{character.name}", user_character_path(character) %>
-<%end%>
+<%=@enemy.name%>
+<%# <%=@enemy.image %>
+<%=@enemy.health%>
+<br>
 
-<h3>Create New Character</h3>
-<%= link_to "New Character", new_user_character_path %>
+
+<%=@character.health%>
+
+
+<%= form_tag("/update_battle", method: "post") do %>
+  <%= hidden_field_tag :enemy_id, @enemy.id %>
+  <%= hidden_field_tag :character_id, @character.id %>
+  <%= button_tag "Attack" %>
+<% end %>
+
+<%= form_tag("/use_potion", method: "post") do %>
+  <%= hidden_field_tag :character_id, @character.id %>
+  <%= button_tag "Use Potion" %>
+<% end %>
+
+
+
+
+
+
+
+<%# <h2><%=@user.name%>
+<%# <% @game.characters.each do |character|  %>
+  <%# <%= link_to "#{character.name}", user_character_path(character) %>
+<%# <%end%> 
+
+<%# <h3>Create New Character</h3> %>
+<%# <%= link_to "New Character", new_user_character_path %> 

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :characters
   end
 
-  get '/battle', to: 'game#battle'
+  # get '/battle', to: 'games#battle'
 
   resources :characters, only: [:show] do
     resources :weapons, only: [:show, :index ]
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :potions, only: [:show, :index ]
   end
 
-  get '/boss', to: 'game#boss_battle'
+  get '/boss', to: 'games#boss_battle'
 
 
   get '/signin', to: 'session#new'
