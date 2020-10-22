@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   get '/boss', to: 'games#boss_battle'
 
+  post '/update_battle', to: 'games#update_battle'
 
   get '/signin', to: 'session#new'
   post '/signin', to: 'session#create'

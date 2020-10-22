@@ -8,7 +8,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    @enemy = Enemy.create(name: "Big Bad Demon", damage: 5, health: 20)
+    @enemy = Enemy.create(name: "Big Bad Demon", damage: 5, health: 20, game_id: @game.id)
     @character = @game.characters.last
   end
 
@@ -39,8 +39,8 @@ class GamesController < ApplicationController
 
   def update_battle
     character = Character.find(params[:character_id])
-    enemy = Enemy.find(params[:enemy_id]).present?
-    enemy = Boss.find(params[:boss_id]).present?
+    enemy = Enemy.find(params[:enemy_id])
+    # enemy = Boss.find(params[:boss_id]).present?
 
     if character
       character.attack(enemy)
