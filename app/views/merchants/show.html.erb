@@ -1,6 +1,6 @@
 <h2><%@merchant.name%></h2>
-<%= image_tag(@merchant.image_url) %>
-<h2><%@merchant.saying.sample%></h2>
+<%# <%= image_tag(@merchant.image_url) %>
+<%# <h2><%@merchant.saying.sample</h2> %>
 
 Weapons
 <% @merchant.weapons.each do |weapon| %>
@@ -9,10 +9,10 @@ Weapons
   <%= form_tag("/buy_item", method: "post") do %>
     <%= hidden_field_tag :weapon_id, weapon.id %>
     <%= hidden_field_tag :merchant_id, merchant.id %>
-    <%= button_tag "Buy Item" %>
+    <%= button_tag "Buy Item" %><br>
   <% end %>
 
-<%end%>
+<%end%><br>
 
 Armors
 <% @merchant.armors.each do |armor| %>
@@ -23,7 +23,7 @@ Armors
     <%= hidden_field_tag :merchant_id, merchant.id %>
     <%= button_tag "Buy Item" %>
   <% end %>
-<%end%>
+<%end%><br>
 
 Potions
 <% @merchant.potions.each do |potion| %>
@@ -34,8 +34,9 @@ Potions
     <%= hidden_field_tag :merchant_id, merchant.id %>
     <%= button_tag "Buy Item" %>
   <% end %>
-<%end%>
+<%end%><br>
 
-like to fight battle
-link to character inventory
-link to character show
+<%= link_to "Character Page", user_character_path(@merchant.game.characters) %><br>
+<%= link_to "Fight Enemies", battle_path %><br>
+<%= link_to "Fight Boss", boss_path %>
+
