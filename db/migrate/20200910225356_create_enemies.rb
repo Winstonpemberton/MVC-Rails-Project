@@ -10,4 +10,3 @@ class CreateEnemies < ActiveRecord::Migration[6.0]
     end
   end
 end
-rails g migration add_game_id_to_enemies --no-test-framework

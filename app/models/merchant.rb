@@ -6,8 +6,7 @@ class Merchant < ApplicationRecord
   has_many :potions
 
   def build_merchant
-    # assign_wares
-    create_weapons 
+    assign_wares
     # assign_merchant_image
     merchant_sayings
   end
@@ -16,14 +15,14 @@ class Merchant < ApplicationRecord
     ['male','female','A being beyong comprehension']
   end
 
-  # def assign_wares
-  #   all_wares.each do |item|
-  #     item.merchant_id = self.id
-  #   end
-  # end
+  def assign_wares
+    create_weapons 
+    create_armors
+    create_potions
+  end
 
   def create_weapons 
-    weapon = Weapon.create(name: 'Steel Sword', damage: 8, cost: 10, :merchant_id => self.id)
+    weapon = Weapon.create(name: 'Steel Sword', damage: 8, cost: 0, :merchant_id => self.id)
     weapon.picture.attach(io: File.open('app/assets/images/weapons/steel sword.PNG'),
     filename: 'steel sword.PNG')
 
@@ -35,6 +34,25 @@ class Merchant < ApplicationRecord
     weapon2.picture.attach(io: File.open('app/assets/images/weapons/dawnbreaker.PNG'),
     filename: 'dawnbreaker.PNG')
   end
+  
+  def create_armors 
+    armor = Armor.create(name: 'Light Armor', armor_raiting: 5, cost: 0, :merchant_id => self.id)
+
+    armor1 = Armor.create(name: 'Medium Armor', armor_raiting: 10, cost: 15, :merchant_id => self.id)
+
+    armor2 = Armor.create(name: 'Dragonbone Armor', armor_raiting: 15 , cost: 45, :merchant_id => self.id )
+
+  end
+
+  def create_potions
+    potion = Potion.create(name: 'Basic Healing Potion', heal_amount: 10 cost: 10, :merchant_id => self.id)
+
+    potion1 = Potion.create(name: 'Superior Healing Potion', heal_amount: 25, cost: 20, :merchant_id => self.id)
+
+    potion2 = Potion.create(name: 'Full Heal Potion', heal_amount: 50 , cost: 45, :merchant_id => self.id )
+
+  end
+
 
   def all_wares
     wares = []

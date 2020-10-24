@@ -6,8 +6,8 @@ class Character < ApplicationRecord
 
   
   def attack(enemy)
-    weapon = self.invetory.weapons.last
-    armor = self.invetory.armor.last
+    weapon = self.inventories.last.weapons.last
+    armor = self.inventories.last.armors.last
 
     enemy.update(:health => (enemy.health - weapon.damage))
     self.update(:health => (self.health - (enemy.damage - armor.armor_rating)),
