@@ -9,6 +9,8 @@ class Game < ApplicationRecord
   has_many :npcs
   has_many :users, through: :npcs
 
+  accepts_nested_attributes_for :merchants, :characters
+
   def set_current_character(character)
     character
   end

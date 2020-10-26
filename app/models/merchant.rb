@@ -45,11 +45,11 @@ class Merchant < ApplicationRecord
   end
 
   def create_potions
-    potion = Potion.create(name: 'Basic Healing Potion', heal_amount: 10 cost: 10, :merchant_id => self.id)
+    potion = Potion.create(name: 'Basic Healing Potion', heal_amount: 10, cost: 10, :merchant_id => self.id)
 
     potion1 = Potion.create(name: 'Superior Healing Potion', heal_amount: 25, cost: 20, :merchant_id => self.id)
 
-    potion2 = Potion.create(name: 'Full Heal Potion', heal_amount: 50 , cost: 45, :merchant_id => self.id )
+    potion2 = Potion.create(name: 'Full Heal Potion', heal_amount: 50, cost: 45, :merchant_id => self.id )
 
   end
 
