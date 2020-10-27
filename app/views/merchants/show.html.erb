@@ -1,39 +1,39 @@
-<h2><%@merchant.name%></h2>
+<h2><%=@merchant.name%></h2>
 <%# <%= image_tag(@merchant.image_url) %>
 <%# <h2><%@merchant.saying.sample</h2> %>
 
-Weapons
+<h2>Weapons</h2>
 <% @merchant.weapons.each do |weapon| %>
-  <%= link_to "#{weapon.name}", weapon_path(weapon) %>
+  <%= link_to "#{weapon.name}", merchant_weapon_path(weapon) %>
 
   <%= form_tag("/buy_item", method: "post") do %>
     <%= hidden_field_tag :weapon_id, weapon.id %>
-    <%= hidden_field_tag :merchant_id, merchant.id %>
+    <%= hidden_field_tag :merchant_id, @merchant.id %>
     <%= button_tag "Buy Item" %><br>
-  <% end %>
+  <% end %><br>
 
 <%end%><br>
 
-Armors
+<h2>Armors</h2>
 <% @merchant.armors.each do |armor| %>
-  <%= link_to "#{armor.name}", armor_path(armor) %>
+  <%= link_to "#{armor.name}", merchant_armor_path(armor) %>
 
   <%= form_tag("/buy_item", method: "post") do %>
     <%= hidden_field_tag :armor_id, armor.id %>
-    <%= hidden_field_tag :merchant_id, merchant.id %>
+    <%= hidden_field_tag :merchant_id, @merchant.id %>
     <%= button_tag "Buy Item" %>
-  <% end %>
+  <% end %><br>
 <%end%><br>
 
-Potions
+<h2>Potions</h2>
 <% @merchant.potions.each do |potion| %>
-  <%= link_to "#{potion.name}", potion_path(potion) %>
+  <%= link_to "#{potion.name}", merchant_potion_path(potion) %>
 
   <%= form_tag("/buy_item", method: "post") do %>
     <%= hidden_field_tag :potion_id, potion.id %>
-    <%= hidden_field_tag :merchant_id, merchant.id %>
+    <%= hidden_field_tag :merchant_id, @merchant.id %>
     <%= button_tag "Buy Item" %>
-  <% end %>
+  <% end %><br>
 <%end%><br>
 
 <%= link_to "Character Page", user_character_path(@merchant.game.characters) %><br>

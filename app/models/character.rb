@@ -1,11 +1,11 @@
 class Character < ApplicationRecord
   belongs_to :game
   belongs_to :user
-  has_many :inventories
+  has_one :inventory
   
   def attack(enemy)
-    weapon = self.inventories.last.weapons.last
-    armor = self.inventories.last.armors.last
+    weapon = self.inventory.weapons.last
+    armor = self.inventory.armors.last
 
     enemy.update(:health => (enemy.health - weapon.damage))
     self.update(:health => (self.health - (enemy.damage - armor.armor_rating)),

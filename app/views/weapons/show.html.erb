@@ -1,3 +1,8 @@
-<%= image_tag(@weapon.image_url) %>
-<h2><%@weapon.name%></h2>
-<h2><%@weapon.damage%></h2>
+<%# <%= image_tag(@weapon.image_url) %>
+<h2>Weapon Name</h2>
+<h3><%=@weapon.name%></h3>
+
+<h2>Weapon Damage</h2>
+<h2><%=@weapon.damage%></h2>
+
+<%= link_to "Go To Merchant", merchant_path %><br>
