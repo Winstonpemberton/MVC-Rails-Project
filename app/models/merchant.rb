@@ -23,16 +23,16 @@ class Merchant < ApplicationRecord
 
   def create_weapons 
     weapon = Weapon.create(name: 'Steel Sword', damage: 8, cost: 0, :merchant_id => self.id)
-    weapon.picture.attach(io: File.open('app/assets/images/weapons/steel sword.PNG'),
-    filename: 'steel sword.PNG')
+    # weapon.picture.attach(io: File.open('app/assets/images/weapons/steel sword.PNG'),
+    # filename: 'steel sword.PNG')
 
     weapon1 = Weapon.create(name: 'Orcish Sword', damage: 15, cost: 15, :merchant_id => self.id )
-    weapon1.picture.attach(io: File.open('app/assets/images/weapons/orcish sword.PNG'),
-    filename: 'orcish sword.PNG')
+    # weapon1.picture.attach(io: File.open('app/assets/images/weapons/orcish sword.PNG'),
+    # filename: 'orcish sword.PNG')
 
     weapon2 = Weapon.create(name: 'Dawnbreaker', damage: 25, cost: 30, :merchant_id => self.id )
-    weapon2.picture.attach(io: File.open('app/assets/images/weapons/dawnbreaker.PNG'),
-    filename: 'dawnbreaker.PNG')
+    # weapon2.picture.attach(io: File.open('app/assets/images/weapons/dawnbreaker.PNG'),
+    # filename: 'dawnbreaker.PNG')
   end
   
   def create_armors 
