@@ -15,7 +15,7 @@ create routes and links to town
 create a link to create npcs
 make sure those routes work
 create methods for making npcs more interactive like sayings 
-make sure all the views work and character and merchant have correct information 
+make sure all the views work
 figure out what a scope method is
 validations
 omniauth

@@ -66,7 +66,6 @@ class GamesController < ApplicationController
       @character = Character.create(character_params)
       @character.update(user_id: current_user.id, game_id: @game.id, health: 50)
       Inventory.create(character_id: @character.id)
-      @game.set_current_character(@character)
       @merchant = Merchant.create(game_id: @game.id)
       @merchant.update(merchant_params)
       @merchant.build_merchant

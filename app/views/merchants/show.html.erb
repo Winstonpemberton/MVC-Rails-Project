@@ -37,6 +37,6 @@ Potions
 <%end%><br>
 
 <%= link_to "Character Page", user_character_path(@merchant.game.characters) %><br>
-<%= link_to "Fight Enemies", battle_path %><br>
+<%= link_to "Fight Enemies", user_game_path(@merchant.game)%><br>
 <%= link_to "Fight Boss", boss_path %>
 

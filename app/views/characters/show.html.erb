@@ -4,7 +4,7 @@
 
 <br>
 <%if @character.inventories.last.weapons.empty? && @character.inventories.last.armors.empty? %>
-<%= "Seems like you don't have any equipment, you should got to the merchant" %>
+<%= "Seems like you don't have any equipment, you should go to the merchant!" %>
 <%end%><br>
 <%= link_to "Character Inventory", character_inventory_path(@character) %><br>
 <%= link_to "Edit Character Information", edit_user_character_path(@character) %><br>
