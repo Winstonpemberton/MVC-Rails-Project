@@ -1,7 +1,7 @@
 class CharactersController < ApplicationController
-  def index
-    @characters = current_user.characters
-  end
+  # def index
+  #   @characters = current_user.characters
+  # end
 
   def equip_weapon
     weapon = Weapon.find(params[:weapon_id])

@@ -1,6 +1,7 @@
 Weapons
 <% @inventory.weapons.each do |weapon| %>
   <%= link_to "#{weapon.name}", weapon_path(weapon) %>
+  
 
   <%= form_tag("/equip_weapon", method: "post") do %>
     <%= hidden_field_tag :weapon_id, weapon.id %>

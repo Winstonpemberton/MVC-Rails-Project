@@ -83,7 +83,7 @@ class Merchant < ApplicationRecord
 
   def buy_item (item, character)
 
-    if item.invetory != character.invetory
+    if item.inventory == nil
       if character.gold > item.cost
         item_transaction(item, character)
         "you bought #{item.name}!"
@@ -96,7 +96,16 @@ class Merchant < ApplicationRecord
   end
 
   def item_transaction(item, character)
-    character.invetory << item
+      case item
+      when item.class.name == "Weapon"
+        item.inventory == character.inventory
+        # item.merchant == nil
+      when item.class.name == "Armor"
+        item.inventory == character.inventory
+        # item.merchant == nil
+      else
+        "Error"
+      end
     character.update(:gold => (character.gold - item.cost))
   end
 
