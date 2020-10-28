@@ -1,6 +1,12 @@
 <h2>Character Name</h2>
 <h3><%=@character.name%></h3>
 
+<h2>Current Equipped Weapon</h2>
+<h3><%=@character.current_weapon%></h3>
+
+<h2>Current Equipped Armor</h2>
+<h3><%=@character.current_armor%></h3>
+
 
 <br>
 <%if @character.inventory.weapons.empty? && @character.inventory.armors.empty? %>

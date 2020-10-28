@@ -3,6 +3,25 @@ class CharactersController < ApplicationController
     @characters = current_user.characters
   end
 
+  def equip_weapon
+    weapon = Weapon.find(params[:weapon_id])
+    character = weapon.inventory.character
+
+    character.equip_weapon(weapon)
+    redirect_to user_character_path(character)
+
+  end
+
+  
+  def equip_armor
+    armor = Armor.find(params[:armor_id])
+    character = Armor.inventory.character
+
+    character.equip_armor(armor)
+    redirect_to user_character_path(character)
+    
+  end
+
   def show
     @character = Character.find(params[:id])
     # current_game.set_current_character(@character)

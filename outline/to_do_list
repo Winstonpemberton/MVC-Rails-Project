@@ -1,4 +1,4 @@
-        Done
+                Done 
 1. generate tables for models
 2. hook up model associations
 3. create routes
@@ -9,7 +9,8 @@
 9. make the methods
 set up local environment 
 
-        Things Left
+                Things Left 
+
 make sure all the routes work
 create routes and links to town
 create a link to create npcs

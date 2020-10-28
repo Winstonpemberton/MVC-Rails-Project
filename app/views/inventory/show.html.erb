@@ -1,11 +1,21 @@
 Weapons
 <% @inventory.weapons.each do |weapon| %>
   <%= link_to "#{weapon.name}", weapon_path(weapon) %>
+
+  <%= form_tag("/equip_weapon", method: "post") do %>
+    <%= hidden_field_tag :weapon_id, weapon.id %>
+    <%= button_tag "Equip Weapon" %><br>
+  <% end %><br>
 <%end%><br>
 
 Armors
 <% @inventory.armors.each do |armor| %>
   <%= link_to "#{armor.name}", armor_path(armor) %>
+
+    <%= form_tag("/equip_armor", method: "post") do %>
+    <%= hidden_field_tag :armor_id, armor.id %>
+    <%= button_tag "Equip Armor" %><br>
+  <% end %><br>
 <%end%><br>
 
 Potions
