@@ -96,11 +96,13 @@ class Merchant < ApplicationRecord
   end
 
   def item_transaction(item, character)
-      case item
-      when item.class.name == "Weapon"
-        item.inventory == character.inventory
+    
+      case item.class.name
+      when "Weapon"
+        item.inventory = character.inventory
+        character.inventory.weapons << item
         # item.merchant == nil
-      when item.class.name == "Armor"
+      when "Armor"
         item.inventory == character.inventory
         # item.merchant == nil
       else

@@ -1,10 +1,11 @@
-Weapons
+<h3>Weapons</h3>
 <% @inventory.weapons.each do |weapon| %>
-  <%= link_to "#{weapon.name}", weapon_path(weapon) %>
+  <%= link_to "#{weapon.name}", merchant_weapon_path(weapon) %>
   
 
   <%= form_tag("/equip_weapon", method: "post") do %>
     <%= hidden_field_tag :weapon_id, weapon.id %>
+    <%= hidden_field_tag :character_id, @inventory.character.id %>
     <%= button_tag "Equip Weapon" %><br>
   <% end %><br>
 <%end%><br>

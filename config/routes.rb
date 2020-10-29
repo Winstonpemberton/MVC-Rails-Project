@@ -8,9 +8,6 @@ Rails.application.routes.draw do
   end
 
   resources :characters, only: [:show] do
-    resources :weapons, only: [:show, :index ]
-    resources :armors, only: [:show, :index ]
-    resources :potions, only: [:show, :index ]
     resources :inventory, only: [:show]
   end
 

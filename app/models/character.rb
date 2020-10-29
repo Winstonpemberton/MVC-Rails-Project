@@ -2,8 +2,10 @@ class Character < ApplicationRecord
   belongs_to :game
   belongs_to :user
   has_one :inventory
+  has_one :weapon
+  has_one :armor
 
-  @weapon = nil
+  @weapon = []
   @armor = nil
   
   def attack(enemy)
@@ -14,24 +16,6 @@ class Character < ApplicationRecord
     self.update(:health => (self.health - (enemy.damage - armor.armor_rating)),
                     :gold => (self.gold + 15))
   end
-
-  def current_weapon
-    @weapon
-  end
-
-  def equip_weapon(weapon)
-    @weapon = weapon
-  end
-
-
-  def current_armor
-    @armor
-  end
-
-  def equip_armor(armor)
-    @armor = armor
-  end
-
 
   def use_potion
     potion = self.invetory.potions.last

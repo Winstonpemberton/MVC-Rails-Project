@@ -5,10 +5,9 @@ class CharactersController < ApplicationController
 
   def equip_weapon
     weapon = Weapon.find(params[:weapon_id])
-    character = weapon.inventory.character
-
-    character.equip_weapon(weapon)
-    redirect_to user_character_path(character)
+    character = Character.find(params[:character_id])
+    character.weapon = weapon
+    redirect_to user_character_path(current_user,character)
 
   end
 
@@ -16,9 +15,8 @@ class CharactersController < ApplicationController
   def equip_armor
     armor = Armor.find(params[:armor_id])
     character = Armor.inventory.character
-
-    character.equip_armor(armor)
-    redirect_to user_character_path(character)
+    character.armor = armor
+    redirect_to user_character_path(current_user,character)
     
   end
 
