@@ -7,11 +7,20 @@ class MerchantsController < ApplicationController
 
   def buy_item
     merchant = Merchant.find(params[:merchant_id])
-    item = Weapon.find(params[:weapon_id]) || Armor.find(params[:armor_id]) || Potion.find(params[:potion_id])
-    # item = Weapon.find(params[:weapon_id]) if item == nil
-    # item = Armor.find(params[:armor_id]) if item == nil
-    # item = Weapon.find(params[:potion_id]) if item == nil
-    value = hash.values[0]
+
+      case params.keys.second
+        
+      when "weapon_id"
+        item = Weapon.find(params[:weapon_id]) 
+      when "armor_id"
+        item = Armor.find(params[:armor_id])
+      when "potion_id"
+        item = Potion.find(params[:potion_id])
+      else
+        "errrrror"
+      end
+
+
     if merchant
       response = merchant.buy_item(item, merchant.game.characters.last)
       flash[:notice] = response
