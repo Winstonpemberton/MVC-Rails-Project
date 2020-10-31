@@ -4,13 +4,10 @@ class Character < ApplicationRecord
   has_one :inventory
   has_one :weapon
   has_one :armor
-
-  @weapon = []
-  @armor = nil
   
   def attack(enemy)
-    weapon = self.inventory.weapons.last
-    armor = self.inventory.armors.last
+    weapon = self.weapon
+    armor = self.armor
 
     enemy.update(:health => (enemy.health - weapon.damage))
     self.update(:health => (self.health - (enemy.damage - armor.armor_rating)),

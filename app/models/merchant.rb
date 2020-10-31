@@ -36,11 +36,11 @@ class Merchant < ApplicationRecord
   end
   
   def create_armors 
-    armor = Armor.create(name: 'Light Armor', armor_raiting: 5, cost: 0, :merchant_id => self.id)
+    armor = Armor.create(name: 'Light Armor', armor_rating: 5, cost: 0, :merchant_id => self.id)
 
-    armor1 = Armor.create(name: 'Medium Armor', armor_raiting: 10, cost: 15, :merchant_id => self.id)
+    armor1 = Armor.create(name: 'Medium Armor', armor_rating: 10, cost: 15, :merchant_id => self.id)
 
-    armor2 = Armor.create(name: 'Dragonbone Armor', armor_raiting: 15 , cost: 45, :merchant_id => self.id )
+    armor2 = Armor.create(name: 'Dragonbone Armor', armor_rating: 15 , cost: 45, :merchant_id => self.id )
 
   end
 

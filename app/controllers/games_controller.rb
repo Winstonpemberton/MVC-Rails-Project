@@ -8,7 +8,12 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    @enemy = Enemy.create(name: "Big Bad Demon", damage: 5, health: 20, game_id: @game.id)
+    if @game.enemy == nil
+      @enemy = Enemy.create(name: "Big Bad Demon", damage: 10, health: 20, game_id: @game.id)
+    else 
+      @enemy = @game.enemy
+    end
+
     @character = @game.characters.last
   end
 
@@ -40,21 +45,24 @@ class GamesController < ApplicationController
   def update_battle
     character = Character.find(params[:character_id])
     enemy = Enemy.find(params[:enemy_id])
+    game = enemy.game
     # enemy = Boss.find(params[:boss_id]).present?
 
     if character
       character.attack(enemy)
       if enemy.health > 0
-        redirect_to battle_path
+        redirect_to user_game_path(current_user,character.game)
       end
       if character.health < 0
-        redirect_to lose_path
+        render :lose
       end
-      if enemy.name == "Super Big Bad Demon" || enemy.health == 0
-        redirect_to win_path
+      if enemy.health < 0
+        game.enemy.destroy
+        character.update(:gold => (character.gold + 15))
+        render :win
       end
     else
-      redirect_to user_character_path(current_character)
+      redirect_to user_character_path(current_user, character)
     end
   end
 

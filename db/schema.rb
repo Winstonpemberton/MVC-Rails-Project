@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_10_29_223415) do
 
   create_table "armors", force: :cascade do |t|
     t.string "name"
-    t.integer "armor_raiting"
+    t.integer "armor_rating"
     t.integer "cost"
     t.string "image_url"
     t.integer "inventory_id"
