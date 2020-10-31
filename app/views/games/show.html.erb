@@ -1,10 +1,10 @@
-<%=@enemy.name%>
+Enemy Name: <%=@enemy.name%><br>
 <%# <%=@enemy.image %>
-<%=@enemy.health%>
+Enemy Health: <%=@enemy.health%><br>
 <br>
 
 
-<%=@character.health%>
+Character Health:<%=@character.health%>
 
 
 <%= form_tag("/update_battle", method: "post") do %>

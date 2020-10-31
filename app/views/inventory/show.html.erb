@@ -10,19 +10,20 @@
   <% end %><br>
 <%end%><br>
 
-Armors
+<h3>Armors</h3>
 <% @inventory.armors.each do |armor| %>
-  <%= link_to "#{armor.name}", armor_path(armor) %>
+  <%= link_to "#{armor.name}", merchant_armor_path(armor) %>
 
     <%= form_tag("/equip_armor", method: "post") do %>
     <%= hidden_field_tag :armor_id, armor.id %>
+    <%= hidden_field_tag :character_id, @inventory.character.id %>
     <%= button_tag "Equip Armor" %><br>
   <% end %><br>
 <%end%><br>
 
-Potions
+<h3>Potions</h3>
 <% @inventory.potions.each do |potion| %>
-  <%= link_to "#{potion.name}", potion_path(potion) %>
+  <%= link_to "#{potion.name}", merchant_potion_path(potion) %>
 <%end%><br>
 
 <%= link_to "Character Page", user_character_path(@inventory.character) %><br>

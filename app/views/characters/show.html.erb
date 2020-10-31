@@ -2,10 +2,14 @@
 <h3><%=@character.name%></h3>
 
 <h2>Current Equipped Weapon</h2>
+<%if @character.weapon != nil %>
 <h3><%=@character.weapon.name%></h3>
+<%end%>
 
 <h2>Current Equipped Armor</h2>
-<h3><%=@character.armor%></h3>
+<%if @character.armor != nil %>
+<h3><%=@character.armor.name%></h3>
+<%end%>
 
 
 <br>

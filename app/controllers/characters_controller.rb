@@ -14,7 +14,7 @@ class CharactersController < ApplicationController
   
   def equip_armor
     armor = Armor.find(params[:armor_id])
-    character = Armor.inventory.character
+    character = armor.inventory.character
     character.armor = armor
     redirect_to user_character_path(current_user,character)
     
