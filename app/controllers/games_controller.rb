@@ -59,7 +59,8 @@ class GamesController < ApplicationController
       if enemy.health < 0
         game.enemy.destroy
         character.update(:gold => (character.gold + 15))
-        render :win
+        flash[:notice] = "Enemy Defeated, 15 gold earned"
+        redirect_to user_character_path(current_user, character)
       end
     else
       redirect_to user_character_path(current_user, character)

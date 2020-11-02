@@ -1,5 +1,13 @@
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+
 <h2>Character Name</h2>
 <h3><%=@character.name%></h3>
+
+<h3>Gold Amount: <%=@character.gold%> </h3> 
 
 <h2>Current Equipped Weapon</h2>
 <%if @character.weapon != nil %>

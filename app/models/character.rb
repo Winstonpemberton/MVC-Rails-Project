@@ -10,8 +10,7 @@ class Character < ApplicationRecord
     armor = self.armor
 
     enemy.update(:health => (enemy.health - weapon.damage))
-    self.update(:health => (self.health - (enemy.damage - armor.armor_rating)),
-                    :gold => (self.gold + 15))
+    self.update(:health => (self.health - (enemy.damage - armor.armor_rating)))
   end
 
   def use_potion
