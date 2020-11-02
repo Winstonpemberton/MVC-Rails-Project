@@ -112,7 +112,7 @@ ActiveRecord::Schema.define(version: 2020_10_29_223415) do
     t.integer "heal_amount"
     t.integer "cost"
     t.string "image_url"
-    t.integer "inventory_id"
+    t.integer "character_id"
     t.integer "merchant_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

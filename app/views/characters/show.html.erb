@@ -19,6 +19,10 @@
 <h3><%=@character.armor.name%></h3>
 <%end%>
 
+<h2>Current Amount of Potions </h2>
+<h3><%=@character.potions.size%></h3>
+
+
 
 <br>
 <%if @character.inventory.weapons.empty? && @character.inventory.armors.empty? %>

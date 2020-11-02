@@ -4,7 +4,7 @@ class Character < ApplicationRecord
   has_one :inventory
   has_one :weapon
   has_one :armor
-  
+  has_many :potions
   def attack(enemy)
     weapon = self.weapon
     armor = self.armor

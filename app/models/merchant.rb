@@ -83,7 +83,7 @@ class Merchant < ApplicationRecord
 
   def buy_item (item, character)
 
-    if item.inventory == nil
+    if item.inventory == nil 
       if character.gold > item.cost
         item_transaction(item, character)
         "you bought #{item.name}!"
@@ -95,6 +95,16 @@ class Merchant < ApplicationRecord
     end
   end
 
+  def buy_potion(potion, character)
+    if character.gold > potion.cost
+      item_transaction(potion, character)
+      "you bought #{potion.name}!"
+      create_potions
+    else
+      "you don't have enough money"
+    end
+  end
+
   def item_transaction(item, character)
     
       case item.class.name
@@ -102,11 +112,12 @@ class Merchant < ApplicationRecord
       when "Weapon"
         item.inventory = character.inventory
         character.inventory.weapons << item
-        # item.merchant == nil
       when "Armor"
         item.inventory = character.inventory
         character.inventory.armors << item
-        # item.merchant == nil
+      when "Potion"
+        item.character = character
+        character.potions << item
       else
         "Error"
       end

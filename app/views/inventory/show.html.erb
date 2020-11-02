@@ -21,11 +21,6 @@
   <% end %><br>
 <%end%><br>
 
-<h3>Potions</h3>
-<% @inventory.potions.each do |potion| %>
-  <%= link_to "#{potion.name}", merchant_potion_path(potion) %>
-<%end%><br>
-
 <%= link_to "Character Page", user_character_path(@inventory.character) %><br>
 
 like to fight battle
