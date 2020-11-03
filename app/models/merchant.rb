@@ -98,8 +98,7 @@ class Merchant < ApplicationRecord
   def buy_potion(potion, character)
     if character.gold > potion.cost
       item_transaction(potion, character)
-      "you bought #{potion.name}!"
-      create_potions
+      "you bought a #{potion.name}!"
     else
       "you don't have enough money"
     end

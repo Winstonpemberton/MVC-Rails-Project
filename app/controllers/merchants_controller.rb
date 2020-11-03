@@ -2,7 +2,7 @@ class MerchantsController < ApplicationController
 
   def show
     @merchant = Merchant.find(params[:id])
-
+    @character = @merchant.game.characters.last
   end
 
   def buy_item
@@ -27,7 +27,7 @@ class MerchantsController < ApplicationController
       redirect_to user_character_path(current_user, merchant.game.characters.last) 
     end
     if potion
-       merchant.buy_potion(potion, merchant.game.characters.last)
+      response = merchant.buy_potion(potion, merchant.game.characters.last)
        flash[:notice] = response
        redirect_to user_character_path(current_user, merchant.game.characters.last) 
     end

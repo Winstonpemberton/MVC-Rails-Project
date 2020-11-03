@@ -2,6 +2,8 @@
 <%# <%= image_tag(@merchant.image_url) %>
 <%# <h2><%@merchant.saying.sample</h2> %>
 
+<h3>Your Current Gold Amount: <%=@character.gold%> </h3> 
+
 <h2>Weapons</h2>
 <% @merchant.weapons.each do |weapon| %>
   <%= link_to "#{weapon.name}", merchant_weapon_path(weapon) %><br>

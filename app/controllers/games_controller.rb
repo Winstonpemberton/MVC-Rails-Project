@@ -25,15 +25,15 @@ class GamesController < ApplicationController
   def use_potion
     character = Character.find(params[:character_id])
     enemy = Enemy.find(params[:enemy_id])
-    if character
-      character.use_potion
+    if character.health > 0 && enemy.health > 0
+      response = character.use_potion
       character.update(:health => (character.health - (enemy.damage - character.armor.armor_rating)))
       flash[:notice] = response
       redirect_to user_game_path(current_user,character.game)
     else
-      flash[:notice] = "Something went wrong, sent back to character page"
+      flash[:notice] = "You were defeated, and returned to the character page"
+      character.update(:health => (character.health + 50))
       redirect_to user_character_path(current_user, character)
-      
     end
   end
 
@@ -55,21 +55,25 @@ class GamesController < ApplicationController
     # enemy = Boss.find(params[:boss_id]).present?
 
     if character
-      character.attack(enemy)
-      if enemy.health > 0
+      response = character.attack(enemy)
+      if enemy.health > 0 && character.health > 0
+        flash[:notice] = response
         redirect_to user_game_path(current_user,character.game)
       end
-      if character.health < 0
-        render :lose
+      if character.health < 0 && enemy.health > 0 
+        flash[:notice] = "You were defeated, and returned to the character page"
+        character.update(:health => (character.health + 50))
+        redirect_to user_character_path(current_user, character)
       end
-      if enemy.health < 0
+      if enemy.health < 0 && character.health > 0
         game.enemy.destroy
         character.update(:gold => (character.gold + 15))
         flash[:notice] = "Enemy Defeated, 15 gold earned"
         redirect_to user_character_path(current_user, character)
       end
-    else
-      redirect_to user_character_path(current_user, character)
+      else
+        flash[:notice] = "something went wrong returned to character page"
+        redirect_to user_character_path(current_user, character)
     end
   end
 
