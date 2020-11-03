@@ -1,3 +1,10 @@
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+
+
 Enemy Name: <%=@enemy.name%><br>
 <%# <%=@enemy.image %>
 Enemy Health: <%=@enemy.health%><br>
@@ -15,6 +22,7 @@ Character Health:<%=@character.health%>
 
 <%= form_tag("/use_potion", method: "post") do %>
   <%= hidden_field_tag :character_id, @character.id %>
+  <%= hidden_field_tag :enemy_id, @enemy.id %>
   <%= button_tag "Use Potion" %>
 <% end %>
 

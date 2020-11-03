@@ -24,10 +24,16 @@ class GamesController < ApplicationController
 
   def use_potion
     character = Character.find(params[:character_id])
+    enemy = Enemy.find(params[:enemy_id])
     if character
       character.use_potion
+      character.update(:health => (character.health - (enemy.damage - character.armor.armor_rating)))
+      flash[:notice] = response
+      redirect_to user_game_path(current_user,character.game)
     else
-      redirect_to battle_path
+      flash[:notice] = "Something went wrong, sent back to character page"
+      redirect_to user_character_path(current_user, character)
+      
     end
   end
 

@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   post '/buy_item', to: 'merchants#buy_item'
   post '/equip_weapon', to: 'characters#equip_weapon'
   post '/equip_armor', to: 'characters#equip_armor'
+  post '/use_potion', to: 'games#use_potion'
 
   post '/update_battle', to: 'games#update_battle'
 

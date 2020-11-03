@@ -14,7 +14,11 @@ class Character < ApplicationRecord
   end
 
   def use_potion
-    potion = self.invetory.potions.last
-    self.update(:health => (self.health + potion.heal_amount))
+    if self.potions > 0
+      potion = self.potions.last
+      self.update(:health => (self.health + potion.heal_amount))
+    else
+      "No potions left"
+    end
   end
 end
