@@ -1,6 +1,6 @@
 <h3>Weapons</h3>
 <% @inventory.weapons.each do |weapon| %>
-  <%= link_to "#{weapon.name}", merchant_weapon_path(weapon) %>
+  <%= link_to "#{weapon.name}", weapon_path(weapon) %>
   
 
   <%= form_tag("/equip_weapon", method: "post") do %>
@@ -12,7 +12,7 @@
 
 <h3>Armors</h3>
 <% @inventory.armors.each do |armor| %>
-  <%= link_to "#{armor.name}", merchant_armor_path(armor) %>
+  <%= link_to "#{armor.name}", armor_path(armor) %>
 
     <%= form_tag("/equip_armor", method: "post") do %>
     <%= hidden_field_tag :armor_id, armor.id %>

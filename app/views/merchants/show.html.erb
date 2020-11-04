@@ -6,7 +6,7 @@
 
 <h2>Weapons</h2>
 <% @merchant.weapons.each do |weapon| %>
-  <%= link_to "#{weapon.name}", merchant_weapon_path(weapon) %><br>
+  <%= link_to "#{weapon.name}", weapon_path(weapon) %><br>
     This Weapon Cost: <%= weapon.cost%>
 
   <%= form_tag("/buy_item", method: "post") do %>
@@ -19,7 +19,7 @@
 
 <h2>Armors</h2>
 <% @merchant.armors.each do |armor| %>
-  <%= link_to "#{armor.name}", merchant_armor_path(armor) %><br>
+  <%= link_to "#{armor.name}", armor_path(armor) %><br>
     This Armor Cost: <%= armor.cost%>
 
   <%= form_tag("/buy_item", method: "post") do %>
@@ -31,7 +31,7 @@
 
 <h2>Potions</h2>
 <% @merchant.potions.each do |potion| %>
-  <%= link_to "#{potion.name}", merchant_potion_path(potion) %><br>
+  <%= link_to "#{potion.name}", potion_path(potion) %><br>
   This Potion Cost: <%= potion.cost%>
 
   <%= form_tag("/buy_item", method: "post") do %>

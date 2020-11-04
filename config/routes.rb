@@ -11,12 +11,11 @@ Rails.application.routes.draw do
     resources :inventory, only: [:show]
   end
 
-  resources :merchants, only: [:show] do
-    resources :weapons, only: [:show, :index ]
-    resources :armors, only: [:show, :index ]
-    resources :potions, only: [:show, :index ]
-  end
+  resources :merchants
 
+  resources :weapons, only: [:show, :index ]
+  resources :armors, only: [:show, :index ]
+  resources :potions, only: [:show, :index ]
   get '/boss', to: 'games#boss_battle'
   
   post '/buy_item', to: 'merchants#buy_item'
