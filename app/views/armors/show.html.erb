@@ -5,4 +5,4 @@
 <h2>Armor Rating</h2>
 <h2><%=@armor.armor_rating%></h2>
 
-<%= link_to "Go To Merchant", merchant_path %><br>
+<%= link_to "Go To Merchant", merchant_path(@armor.merchant.id)%><br>

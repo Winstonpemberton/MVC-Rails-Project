@@ -34,4 +34,5 @@
 <%if @character.inventory.weapons.present? && @character.inventory.armors.present? %>
 <%= link_to "Fight Enemies", user_game_path(@character.game) %><br>
 <%= link_to "Fight Boss", boss_path %>
+
 <%end%>

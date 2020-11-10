@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 2020_10_29_223415) do
     t.string "image_url"
     t.integer "gender"
     t.integer "game_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "background"

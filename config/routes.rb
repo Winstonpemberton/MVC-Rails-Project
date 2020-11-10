@@ -12,12 +12,13 @@ Rails.application.routes.draw do
   end
 
   resources :merchants
+  resources :npcs, only: [:show, :index ]
 
   resources :weapons, only: [:show, :index ]
   resources :armors, only: [:show, :index ]
   resources :potions, only: [:show, :index ]
+
   get '/boss', to: 'games#boss_battle'
-  
   post '/buy_item', to: 'merchants#buy_item'
   post '/equip_weapon', to: 'characters#equip_weapon'
   post '/equip_armor', to: 'characters#equip_armor'

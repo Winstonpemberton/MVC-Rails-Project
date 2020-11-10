@@ -5,4 +5,4 @@
 <h2>Weapon Damage</h2>
 <h2><%=@weapon.damage%></h2>
 
-<%= link_to "Go To Merchant", merchant_path %><br>
+<%= link_to "Go To Merchant", merchant_path(@weapon.merchant.id) %><br>

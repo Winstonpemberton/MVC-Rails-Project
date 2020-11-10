@@ -1,6 +1,6 @@
 class Merchant < ApplicationRecord
   belongs_to :game
-
+  belongs_to :user
   has_many :weapons
   has_many :armors
   has_many :potions

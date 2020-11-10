@@ -6,6 +6,7 @@ class CreateMerchants < ActiveRecord::Migration[6.0]
       t.string :image_url
       t.integer :gender
       t.integer :game_id
+      t.integer :user_id
 
       t.timestamps
     end

@@ -6,4 +6,4 @@
 <h2>Potion Heal Amount</h2>
 <h2><%=@potion.heal_amount%></h2>
 
-<%= link_to "Go To Merchant", merchant_path %><br>
+<%= link_to "Go To Merchant", merchant_path(@potion.merchant.id) %><br>

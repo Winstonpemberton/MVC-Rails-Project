@@ -3,11 +3,11 @@ class MerchantsController < ApplicationController
   def show
     @merchant = Merchant.find(params[:id])
     @character = @merchant.game.characters.last
+
   end
 
   def buy_item
     merchant = Merchant.find(params[:merchant_id])
-
       case params.keys.second
         
       when "weapon_id"
