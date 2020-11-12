@@ -6,13 +6,29 @@ class GamesController < ApplicationController
     @merchant = Merchant.new 
   end
 
-  def show
+  def show   
     @game = Game.find(params[:id])
-    if @game.enemy == nil
-      @enemy = Enemy.create(name: "Big Bad Demon", damage: 10, health: 20, game_id: @game.id)
-    else 
-      @enemy = @game.enemy
+    @character = @game.characters.last
+
+    case params.values.first
+         
+    when "enemy"  
+      if @game.enemy == nil
+        @enemy = Enemy.create(name: "Big Bad Demon", damage: 10, health: 20, game_id: @game.id)
+      else 
+        @enemy = @game.enemy
+      end
+    when "boss"
+      if @game.boss == nil
+        @enemy = Boss.create(name: "Big Bad Boss Demon", damage: 30, health: 50, game_id: @game.id)
+      else 
+        @enemy = @game.boss
+      end
+    else
+      "errrrror"
     end
+
+    @game = Game.find(params[:id])
 
     @character = @game.characters.last
   end
@@ -37,28 +53,39 @@ class GamesController < ApplicationController
     end
   end
 
-  def boss_battle
-    @enemy = Boss.create(name: "Super Big Bad Demon", damage: 50, health: 60)
-    @character = current_character
-  end
+  # def boss_battle
+  #   @enemy = Boss.create(name: "Super Big Bad Demon", damage: 50, health: 60)
+  #   @character = current_character
+  # end
 
   def win
   end
 
-  def lose
-  end
+  # def lose
+  # end
 
   def update_battle
     character = Character.find(params[:character_id])
-    enemy = Enemy.find(params[:enemy_id])
+    
+    if params[:enemy_class] = "Enemy"
+      enemy = Enemy.find(params[:enemy_id] )
+    else 
+      enemy = Boss.find(params[:enemy_id]
+    end
+    
+    # enemy = Enemy.find(params[:enemy_id]) || Boss.find(params[:enemy_id])
     game = enemy.game
     # enemy = Boss.find(params[:boss_id]).present?
 
     if character
       response = character.attack(enemy)
+      # if enemy.health > 0 && character.health > 0 && enemy.class == "Boss"
+      #   flash[:notice] = response
+      #   redirect_to user_game_path(current_user,character.game, :enemy_type => "boss")
+      # end
       if enemy.health > 0 && character.health > 0
         flash[:notice] = response
-        redirect_to user_game_path(current_user,character.game)
+        redirect_to user_game_path(current_user,character.game, :enemy_type => "enemy")
       end
       if character.health < 0 && enemy.health > 0 
         flash[:notice] = "You were defeated, and returned to the character page"

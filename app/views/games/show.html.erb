@@ -16,6 +16,7 @@ Character Health:<%=@character.health%>
 
 <%= form_tag("/update_battle", method: "post") do %>
   <%= hidden_field_tag :enemy_id, @enemy.id %>
+  <%= hidden_field_tag :enemy_class, @enemy.class %>
   <%= hidden_field_tag :character_id, @character.id %>
   <%= button_tag "Attack" %>
 <% end %>

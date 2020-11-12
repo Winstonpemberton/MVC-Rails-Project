@@ -9,7 +9,7 @@ class MerchantsController < ApplicationController
   def buy_item
     merchant = Merchant.find(params[:merchant_id])
       case params.keys.second
-        
+         
       when "weapon_id"
         item = Weapon.find(params[:weapon_id]) 
       when "armor_id"
