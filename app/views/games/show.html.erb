@@ -23,6 +23,7 @@ Character Health:<%=@character.health%>
 
 <%= form_tag("/use_potion", method: "post") do %>
   <%= hidden_field_tag :character_id, @character.id %>
+  <%= hidden_field_tag :enemy_class, @enemy.class %>
   <%= hidden_field_tag :enemy_id, @enemy.id %>
   <%= button_tag "Use Potion" %>
 <% end %>

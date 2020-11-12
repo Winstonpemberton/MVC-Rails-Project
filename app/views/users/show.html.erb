@@ -1,6 +1,13 @@
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %><br>
+
 <h2><%=@user.name%></h2>
-<% @user.games.each_with_index do |game, index| %>
-  <%= link_to "Game #{index}", user_game_path(game) %>
+<h3><%="Created Characters"%></h3>
+<% @user.characters.each do |character| %>
+  <%= link_to "#{character.name}", user_character_path(@user,character) %>
 <%end %>
 
 <h3>Create new game</h3>

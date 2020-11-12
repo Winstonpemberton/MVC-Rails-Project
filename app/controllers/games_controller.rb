@@ -40,12 +40,23 @@ class GamesController < ApplicationController
 
   def use_potion
     character = Character.find(params[:character_id])
-    enemy = Enemy.find(params[:enemy_id])
-    if character.health > 0 && enemy.health > 0
+
+    if params[:enemy_class] == "Enemy"
+      enemy = Enemy.find(params[:enemy_id])
+    else 
+      enemy = Boss.find(params[:enemy_id])
+    end
+
+    if character.health > 0 && enemy.health > 0 && enemy.class.name == "Enemy"
       response = character.use_potion
       character.update(:health => (character.health - (enemy.damage - character.armor.armor_rating)))
       flash[:notice] = response
-      redirect_to user_game_path(current_user,character.game)
+      redirect_to user_game_path(current_user,character.game, :enemy_type => "enemy")
+    elsif character.health > 0 && enemy.health > 0 && enemy.class.name == "Boss"
+      response = character.use_potion
+      character.update(:health => (character.health - (enemy.damage - character.armor.armor_rating)))
+      flash[:notice] = response
+      redirect_to user_game_path(current_user,character.game, :enemy_type => "boss")
     else
       flash[:notice] = "You were defeated, and returned to the character page"
       character.update(:health => (character.health + 50))
@@ -67,10 +78,10 @@ class GamesController < ApplicationController
   def update_battle
     character = Character.find(params[:character_id])
     
-    if params[:enemy_class] = "Enemy"
-      enemy = Enemy.find(params[:enemy_id] )
+    if params[:enemy_class] == "Enemy"
+      enemy = Enemy.find(params[:enemy_id])
     else 
-      enemy = Boss.find(params[:enemy_id]
+      enemy = Boss.find(params[:enemy_id])
     end
     
     # enemy = Enemy.find(params[:enemy_id]) || Boss.find(params[:enemy_id])
@@ -78,21 +89,26 @@ class GamesController < ApplicationController
     # enemy = Boss.find(params[:boss_id]).present?
 
     if character
-      response = character.attack(enemy)
-      # if enemy.health > 0 && character.health > 0 && enemy.class == "Boss"
-      #   flash[:notice] = response
-      #   redirect_to user_game_path(current_user,character.game, :enemy_type => "boss")
-      # end
-      if enemy.health > 0 && character.health > 0
+      response = character.attack(enemy) 
+      if enemy.health > 0 && character.health > 0 && enemy.class.name == "Boss"
+        flash[:notice] = response
+        redirect_to user_game_path(current_user,character.game, :enemy_type => "boss")
+      end
+      if enemy.health > 0 && character.health > 0 && enemy.class.name == "Enemy"
         flash[:notice] = response
         redirect_to user_game_path(current_user,character.game, :enemy_type => "enemy")
+      end
+      if enemy.health < 0 && enemy.class.name == "Boss" 
+        game.boss.destroy
+        flash[:notice] = "You've beaten the Boss and completed the game"
+        redirect_to user_path(current_user)
       end
       if character.health < 0 && enemy.health > 0 
         flash[:notice] = "You were defeated, and returned to the character page"
         character.update(:health => (character.health + 50))
         redirect_to user_character_path(current_user, character)
       end
-      if enemy.health < 0 && character.health > 0
+      if enemy.health < 0 && character.health > 0 && enemy.class.name == "Enemy"
         game.enemy.destroy
         character.update(:gold => (character.gold + 15))
         flash[:notice] = "Enemy Defeated, 15 gold earned"

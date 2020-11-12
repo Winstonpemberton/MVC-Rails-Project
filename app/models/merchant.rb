@@ -84,7 +84,7 @@ class Merchant < ApplicationRecord
   def buy_item (item, character)
 
     if item.inventory == nil 
-      if character.gold > item.cost
+      if character.gold >= item.cost
         item_transaction(item, character)
         "you bought #{item.name}!"
       else
@@ -96,7 +96,7 @@ class Merchant < ApplicationRecord
   end
 
   def buy_potion(potion, character)
-    if character.gold > potion.cost
+    if character.gold >= potion.cost
       item_transaction(potion, character)
       "you bought a #{potion.name}!"
     else
