@@ -13,9 +13,10 @@ make sure those routes work
 make sure all the views work
 
                 Things Left 
-                        
+
 refactor to make sure its DRY
 figure out what a scope method is
+figure out partials 
 validations
 omniauth
 make video and blog post
