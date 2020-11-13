@@ -7,6 +7,9 @@
 <h2>Character Name</h2>
 <h3><%=@character.name%></h3>
 
+<h2>Character Background</h2>
+<%=@character.background%>
+
 <h3>Gold Amount: <%=@character.gold%> </h3> 
 
 <h2>Current Equipped Weapon</h2>
@@ -30,9 +33,8 @@
 <%end%><br>
 <%= link_to "Character Inventory", character_inventory_path(@character) %><br>
 <%= link_to "Edit Character Information", edit_user_character_path(@character) %><br>
-<%= link_to "Go To Merchant", merchant_path %><br>
+<%= link_to "Delete Character", merchant_path %><br>
 <%if @character.inventory.weapons.present? && @character.inventory.armors.present? %>
-
 <%= link_to "Fight Enemies", user_game_path(@character.game, :enemy_type => "enemy") %><br>
 <%= link_to "Fight Boss", user_game_path(@character.game, :enemy_type => "boss") %>
 

@@ -8,19 +8,15 @@
 8. brainstorm about the necessary methods
 9. make the methods
 set up local environment 
+make sure all the routes work
+make sure those routes work
+make sure all the views work
 
                 Things Left 
-
-make sure all the routes work
-create routes and links to town
-create a link to create npcs
-make sure those routes work
-create methods for making npcs more interactive like sayings 
-make sure all the views work
+                        
+refactor to make sure its DRY
 figure out what a scope method is
 validations
 omniauth
-try to get images to work
-refactor to make sure its DRY
 make video and blog post
 submit

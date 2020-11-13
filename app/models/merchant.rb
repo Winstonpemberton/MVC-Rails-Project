@@ -54,13 +54,13 @@ class Merchant < ApplicationRecord
   end
 
 
-  def all_wares
-    wares = []
-    wares << Weapon.all
-    wares << Armor.all
-    wares << Potion.all
-    wares
-  end
+  # def all_wares
+  #   wares = []
+  #   wares << Weapon.all
+  #   wares << Armor.all
+  #   wares << Potion.all
+  #   wares
+  # end
 
 
 
@@ -82,7 +82,7 @@ class Merchant < ApplicationRecord
   end
 
   def buy_item (item, character)
-
+    
     if item.inventory == nil 
       if character.gold >= item.cost
         item_transaction(item, character)
