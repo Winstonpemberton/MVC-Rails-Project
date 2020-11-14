@@ -81,18 +81,15 @@ class Merchant < ApplicationRecord
     self.saying = ["Anaria shola. (Speak your business.)", "Bal'a dash, malanore. (Greetings, traveler.)", "We will persevere!", "Our enemies will fall!", "Victory lies ahead!", "Anu belore dela'na. (The sun guides us.)","What business have you?", "Glory to the sin'dorei.","Yes?","State your business.","The eternal sun guides us.","The dark times will pass."]
   end
 
-  def determine_item(key)
-    case key
+  def determine_item(item_type, item_id)
+    case item_type
          
     when "weapon_id"
-      Weapon.find(params[:weapon_id]) 
+      Weapon.find(item_id) 
     when "armor_id"
-      Armor.find(params[:armor_id])
+      Armor.find(item_id)
     when "potion_id"
-      Potion.find(params[:potion_id])
-    # else
-    #   "Something went wrong"
-    #   user_character_path(current_user, merchant.game.characters.last) 
+      Potion.find(item_id)
     end
   end
 
@@ -136,6 +133,10 @@ class Merchant < ApplicationRecord
         "Error"
       end
     character.update(:gold => (character.gold - item.cost))
+  end
+
+  def self.is_potion?(item)
+    item.class.name == "Potion"
   end
 
 end

@@ -26,24 +26,16 @@ class Character < ApplicationRecord
     end
   end
 
-  # def determine_enemy(key, enemy_id)
-  #   if key == "Enemy"
-  #     enemy = Enemy.find(enemy_id)
-  #   else 
-  #     enemy = Boss.find(enemy_id)
-  #   end
-  # end
-
   def update_health(enemy)
-    self.update(:health => (character.health - (enemy.damage - character.armor.armor_rating)))
+    self.update(:health => (self.health - (enemy.damage - self.armor.armor_rating)))
   end
 
   def revive
-    self.update(:health => (character.health + 50))
+    self.update(:health => (self.health + 50))
   end
 
-  def recieve_gold
-    self.update(:gold => (character.gold + 15))
+  def receive_gold
+    self.update(:gold => (self.gold + 15))
   end
 
 end

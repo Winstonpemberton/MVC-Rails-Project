@@ -42,4 +42,16 @@ class Game < ApplicationRecord
     end
   end
 
+  def self.continue_battle?(enemy, character) 
+    enemy.health > 0 && character.health > 0 && enemy.class.name == "Enemy"
+  end
+
+  def self.game_beaten?(enemy)
+    enemy.health < 0 && enemy.class.name == "Boss" 
+  end
+
+  def self.character_defeated(character, enemy) 
+    character.health < 0 && enemy.health > 0 
+  end
+
 end

@@ -12,7 +12,7 @@ class GamesController < ApplicationController
 
     @enemy = @game.determine_enemy(params.values.first)
 
-    case params.values.first
+    # case params.values.first
          
     # when "enemy"  
     #   if @game.enemy == nil
@@ -84,27 +84,30 @@ class GamesController < ApplicationController
     # else 
     #   enemy = Boss.find(params[:enemy_id])
     # end
-    
-    # enemy = Enemy.find(params[:enemy_id]) || Boss.find(params[:enemy_id])
+
     game = enemy.game
-    # enemy = Boss.find(params[:boss_id]).present?
 
     if character
       response = character.attack(enemy) 
-      if enemy.health > 0 && character.health > 0 && enemy.class.name == "Boss"
+
+      if Game.continue_battle?(enemy, character) && enemy.which_enemy?
+        #  enemy.health > 0 && character.health > 0 && enemy.class.name == "Boss"
+        flash[:notice] = response
+        redirect_to user_game_path(current_user,character.game, :enemy_type => "enemy")
+
+      elsif Game.continue_battle?(enemy, character) && enemy.which_enemy?
+        # enemy.health > 0 && character.health > 0 && enemy.class.name == "Enemy"
         flash[:notice] = response
         redirect_to user_game_path(current_user,character.game, :enemy_type => "boss")
       end
-      if enemy.health > 0 && character.health > 0 && enemy.class.name == "Enemy"
-        flash[:notice] = response
-        redirect_to user_game_path(current_user,character.game, :enemy_type => "enemy")
-      end
-      if enemy.health < 0 && enemy.class.name == "Boss" 
+      if Game.game_beaten?(enemy) 
+        # enemy.health < 0 && enemy.class.name == "Boss" 
         game.boss.destroy
         flash[:notice] = "You've beaten the Boss and completed the game"
         redirect_to user_path(current_user)
       end
-      if character.health < 0 && enemy.health > 0 
+      if Game.character_defeated?(character, enemy) 
+        # character.health < 0 && enemy.health > 0 
         flash[:notice] = "You were defeated, and returned to the character page"
         # character.update(:health => (character.health + 50))
         character.revive
