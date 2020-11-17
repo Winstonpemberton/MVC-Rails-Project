@@ -11,10 +11,10 @@ set up local environment
 make sure all the routes work
 make sure those routes work
 make sure all the views work
+refactor to make sure its DRY
 
                 Things Left 
 
-refactor to make sure its DRY
 figure out what a scope method is
 figure out partials 
 validations

@@ -4,6 +4,12 @@
 
 <h3>Your Current Gold Amount: <%=@character.gold%> </h3> 
 
+<h3>Available Items </h3>
+<%=@merchant.available_items(@character.gold).each do |item| %>
+    <%= item.name%>
+    Item Cost: <%= item.cost%>
+  <% end %><br>
+
 <h2>Weapons</h2>
 <% @merchant.weapons.each do |weapon| %>
   <%= link_to "#{weapon.name}", weapon_path(weapon) %><br>

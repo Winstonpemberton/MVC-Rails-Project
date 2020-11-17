@@ -1,4 +1,6 @@
 class Merchant < ApplicationRecord
+  # scope :all_wares, -> { select("weapons, armors, potions") }
+
   belongs_to :game
   belongs_to :user
   has_many :weapons
@@ -52,16 +54,6 @@ class Merchant < ApplicationRecord
     potion2 = Potion.create(name: 'Full Heal Potion', heal_amount: 50, cost: 45, :merchant_id => self.id )
 
   end
-
-
-  # def all_wares
-  #   wares = []
-  #   wares << Weapon.all
-  #   wares << Armor.all
-  #   wares << Potion.all
-  #   wares
-  # end
-
 
 
   # def assign_merchant_image

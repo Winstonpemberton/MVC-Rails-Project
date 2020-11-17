@@ -7,7 +7,7 @@
 <h2><%=@user.name%></h2>
 <h3><%="Created Characters"%></h3>
 <% @user.characters.each do |character| %>
-  <%= link_to "#{character.name}", user_character_path(@user,character) %>
+  <%= link_to "#{character.name}", user_character_path(@user,character) %><br>
 <%end %>
 
 <h3>Create new game</h3>

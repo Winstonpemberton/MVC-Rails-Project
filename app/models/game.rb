@@ -26,7 +26,7 @@ class Game < ApplicationRecord
       end
     when "boss"
       if self.boss == nil
-        Boss.create(name: "Big Bad Boss Demon", damage: 30, health: 50, game_id: @game.id)
+        Boss.create(name: "Big Bad Boss Demon", damage: 30, health: 50, game_id:  self.id)
       else 
         self.boss
       end
@@ -43,15 +43,18 @@ class Game < ApplicationRecord
   end
 
   def self.continue_battle?(enemy, character) 
-    enemy.health > 0 && character.health > 0 && enemy.class.name == "Enemy"
+    enemy.health > 0 && character.health
   end
 
   def self.game_beaten?(enemy)
-    enemy.health < 0 && enemy.class.name == "Boss" 
+    enemy.health <= 0 && enemy.class.name == "Boss" 
   end
 
-  def self.character_defeated(character, enemy) 
-    character.health < 0 && enemy.health > 0 
+  def self.character_defeated?(character, enemy) 
+    character.health <= 0 && enemy.health > 0 
   end
 
+  def self.enemy_defeated?(character, enemy)
+    enemy.health < 0 && character.health > 0
+  end
 end
