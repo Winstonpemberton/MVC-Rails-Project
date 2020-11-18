@@ -1,6 +1,9 @@
 class Merchant < ApplicationRecord
   # scope :all_wares, -> { select("weapons, armors, potions") }
 
+  validates :name, presence: true
+  validates :background, presence: true
+
   belongs_to :game
   belongs_to :user
   has_many :weapons
@@ -129,6 +132,10 @@ class Merchant < ApplicationRecord
 
   def self.is_potion?(item)
     item.class.name == "Potion"
+  end
+
+  def get_character_from_game
+    self.game.characters.last
   end
 
 end

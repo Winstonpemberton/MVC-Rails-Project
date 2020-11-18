@@ -1,14 +1,43 @@
 <h2>New Game</h2>
 
 <%= form_tag user_games_path do %>
-  <p> Name your game's merchant: <%= text_field_tag "merchant[name]" %></p>
-  <p> Give them a background: <%= text_field_tag "merchant[background]" %></p>
-  <p> Please select the gender of your merchant </p>
-  <%= select(:merchant, :gender, @merchant.genders, options ={:prompt => "Select a gender"}, :class =>"gender") %>
-  
 
-  <p> Name your character: <%= text_field_tag "character[name]" %></p>
-  <p> Give them a background: <%= text_field_tag "character[background]" %></p>
+  <% if @merchant.errors.any? || @character.errors.any? %>
+    <div id="error_explanation">
+      <h2>There were some errors:</h2>
+      <ul>
+        <%if @merchant%>
+          <% @merchant.errors.full_messages.each do |message| %>
+          <li>Merchant <%= message %></li>
+          <% end %>
+        <% end %>
+        <%if @character%>
+          <% @character.errors.full_messages.each do |message| %>
+          <li>Character <%= message %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+
+    <div class="field<%= ' field_with_errors' if @merchant.errors[:name].any? %>">
+      <p> Name your game's merchant: <%= text_field_tag "merchant[name]" %></p>
+    </div>
+
+    <div class="field<%= ' field_with_errors' if @merchant.errors[:background].any? %>">
+      <p> Give them a background: <%= text_area_tag "merchant[background]" %></p>
+      <p> Please select the gender of your merchant </p>
+      <%= select(:merchant, :gender, @merchant.genders, options ={:prompt => "Select a gender"}, :class =>"gender") %>
+    </div>
+
+    <div class="field<%= ' field_with_errors' if @character.errors[:name].any? %>">
+      <p> Name your character: <%= text_field_tag "character[name]" %></p>
+    </div>
+    
+    <div class="field<%= ' field_with_errors' if @character.errors[:name].any? %>">
+      <p> Give them a background: <%= text_area_tag "character[background]" %></p>
+    </div>
 
   <%= submit_tag "Start New Game" %>
 <% end %>

@@ -1,4 +1,8 @@
 class Character < ApplicationRecord
+
+  validates :name, presence: true
+  validates :background, presence: true
+  
   belongs_to :game
   belongs_to :user
   has_one :inventory

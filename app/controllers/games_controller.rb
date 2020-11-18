@@ -4,6 +4,7 @@ class GamesController < ApplicationController
   def new
     @game = Game.new
     @merchant = Merchant.new 
+    @character = Character.new
   end
 
   def show   
@@ -81,13 +82,13 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.create
+    @character = Character.create(character_params)
+    @character.update(user_id: current_user.id, game_id: @game.id, health: 50, gold: 5)
+    @merchant = Merchant.create(user_id: current_user.id, game_id: @game.id)
+    @merchant.update(merchant_params)
 
-    if current_user
-      @character = Character.create(character_params)
-      @character.update(user_id: current_user.id, game_id: @game.id, health: 50, gold: 5)
+    if @character.valid? && @merchant.valid?
       Inventory.create(character_id: @character.id)
-      @merchant = Merchant.create(user_id: current_user.id, game_id: @game.id)
-      @merchant.update(merchant_params)
       @merchant.build_merchant
       redirect_to @character
     else
