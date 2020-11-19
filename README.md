@@ -1,8 +1,5 @@
 # MVC::Rails::Project
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/MVC/Rails/Project`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This is a web based RPG, signin and start a new game. Create a character and a merchant by giving them names and backgrounds. Once created you'll be transfered to the character homepage and be asked to buy a weapon and armor. After that equip them in your inventory and head out and defeat enemies for money to afford better items that do better damage or have a better armor rating. When you think you're up for it take on the boss to beat the game.
 
 ## Installation
 

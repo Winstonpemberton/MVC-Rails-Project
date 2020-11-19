@@ -1,0 +1,20 @@
+<h3>"Characters Sorted By Name"</h3>
+<%Character.sort_by_name.each do |character|%>
+    Character Name: <%=character.name%><br>
+    Character Background: <%=character.background%><br>
+    Character Gold Amount: <%=character.gold%><br>
+<%end%>
+
+<h3>"Characters With Gold Amount Above 10"</h3>
+<%=Character.gold_above_10.each do |character|%>
+    Character Name: <%=character.name%><br>
+    Character Background: <%=character.background%><br>
+    Character Gold Amount: <%=character.gold%><br>
+<%end%>
+
+<h3>"Characters Sorted By Name and With Gold Amount Above 10"</h3>
+<%=Character.sort_by_name.gold_above_10.each do |character|%>
+    Character Name: <%=character.name%><br>
+    Character Background: <%=character.background%><br>
+    Character Gold Amount: <%=character.gold%><br>
+<%end%>

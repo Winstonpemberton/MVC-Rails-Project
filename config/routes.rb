@@ -26,6 +26,11 @@ Rails.application.routes.draw do
 
   post '/update_battle', to: 'games#update_battle'
 
+  match '/auth/:provider/callback', to: 'session#amniauth_create', via: [:get, :post]
+  get 'auth/github', :as => 'github_auth'
+  get '/scope_test', to: 'users#scope_test'
+
+
   get '/signin', to: 'session#new'
   post '/signin', to: 'session#create'
   delete '/signout', to: 'session#destroy'

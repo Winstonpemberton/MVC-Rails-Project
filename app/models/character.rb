@@ -1,5 +1,8 @@
 class Character < ApplicationRecord
 
+  scope :sort_by_name, -> { order(name: :asc) }
+  scope :gold_above_10, -> { where("gold > 10") }
+
   validates :name, presence: true
   validates :background, presence: true
   

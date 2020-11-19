@@ -28,6 +28,8 @@ class UsersController < ApplicationController
       render :edit
     end
   end
+  def scope_test
+  end
 
   def show 
     @user = User.find(params[:id])

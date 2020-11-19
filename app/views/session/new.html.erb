@@ -6,6 +6,7 @@
   <%= submit_tag "Sign In" %>
 
   <%= link_to(controller: 'users', action: 'new') { 'sign up' } %>
+  <p><%= link_to 'Signin with GitHub', github_auth_path%>.</p>
 <% end %>
 
 
