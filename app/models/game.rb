@@ -45,7 +45,7 @@ class Game < ApplicationRecord
 
   # helper method to check if both the enemy and character have health left 
   def self.continue_battle?(enemy, character) 
-    enemy.health > 0 && character.health > 0 
+    enemy.health > 0 && character.health
   end
 
   # checks if the character beats a boss type enemy 
