@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
   before_action :require_login, except: [:new, :create]
 
+  # loads the user signup page 
   def new
     @user = User.new
   end
 
+  # creates a new user object 
   def create
     user = User.create(user_params)
     if user.valid?
@@ -15,10 +17,12 @@ class UsersController < ApplicationController
     end
   end
 
+  # loads the update user page 
   def edit
     @user = User.find(params[:id])
   end
 
+  # updates user info 
   def update
     @user = User.find(params[:id])
 
@@ -28,9 +32,12 @@ class UsersController < ApplicationController
       render :edit
     end
   end
+
+  # loads the page with scope methods 
   def scope_test
   end
 
+  # loads the user page 
   def show 
     @user = User.find(params[:id])
   end
