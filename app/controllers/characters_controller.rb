@@ -1,5 +1,6 @@
 class CharactersController < ApplicationController
 
+  # creates a association between a character and a weapon
   def equip_weapon
     weapon = Weapon.find(params[:weapon_id])
     character = Character.find(params[:character_id])
@@ -7,7 +8,7 @@ class CharactersController < ApplicationController
     redirect_to user_character_path(current_user,character)
   end
 
-  
+  # creates a association between a character and armor 
   def equip_armor
     armor = Armor.find(params[:armor_id])
     character = armor.inventory.character
@@ -15,16 +16,19 @@ class CharactersController < ApplicationController
     redirect_to user_character_path(current_user,character)
   end
 
+  # loads the show page for characters 
   def show
     @character = Character.find(params[:id])
     @game = @character.game
   end
 
+  # loads the new character page for characters 
   def new
     @user = current_user
     @character = Character.new
   end
 
+  # might use for future development
   # def create
   #   @character = Character.create(character_params)
   #   @character.update(user_id: current_user.id, game_id: @game.id, health: 50)
@@ -35,11 +39,13 @@ class CharactersController < ApplicationController
   #   end
   # end
 
+# loads the edit page for updating a character
   def edit
     @user = current_user
     @character = Character.find(params[:id])
   end
 
+# updates character info
   def update
     @character = Character.find(params[:id])
     @character.update(character_params)
@@ -49,7 +55,7 @@ class CharactersController < ApplicationController
       render :edit
     end
   end
-
+# destroys a character object
   def destroy
     @character = Character.find(params[:id])
     @character.destroy
@@ -58,7 +64,7 @@ class CharactersController < ApplicationController
   end
 
   private
-
+  # might use for future development
   # def character_params
   #   params.require(:character).permit(:name, :background)
   # end

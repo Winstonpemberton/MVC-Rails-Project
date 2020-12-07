@@ -2,12 +2,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user, :require_login
 
+  # gets the current user
   def current_user
     if session[:user_id].present?
       user = User.find_by(:id => session[:user_id])
     end
   end
 
+# checks if the user is logged in
   def require_login
     unless current_user
       redirect_to root_url

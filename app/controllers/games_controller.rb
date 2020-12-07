@@ -1,14 +1,15 @@
 class GamesController < ApplicationController
   before_action :require_login
 
+  # loads the page to create a new game, character and merchant 
   def new
     @game = Game.new
     @merchant = Merchant.new 
     @character = Character.new
   end
 
+  # loads the show page for games 
   def show   
-
     @game = Game.find(params[:id])
     @character = @game.characters.last
     @enemy = @game.determine_enemy(params.values.first)
@@ -17,16 +18,19 @@ class GamesController < ApplicationController
 
   end
 
+  # runs the heal method to give a character more health durring a battle
   def use_potion
     character = Character.find(params[:character_id])
     enemy = Game.determine_enemy(params[:enemy_class], params[:enemy_id])
 
+    # if the battle is still going on and it's against an "enemy" type, it loads back into the battle  
     if Game.continue_battle?(enemy, character) && enemy.class.name == "Enemy"
       response = character.use_potion
       character.update_health(enemy)
       flash[:notice] = response
       redirect_to user_game_path(current_user,character.game, :enemy_type => "enemy")
-      
+
+    # if the battle is still going on and it's against an "boss" type, it loads back into the battle  
     elsif Game.continue_battle?(enemy, character) && enemy.class.name == "Boss"
       response = character.use_potion
       character.update_health(enemy)
@@ -34,11 +38,13 @@ class GamesController < ApplicationController
       redirect_to user_game_path(current_user,character.game, :enemy_type => "boss")
       
     else
+      # if the player is killed during a heal attempt, they load back into the character screen
       flash[:notice] = "You were defeated, and returned to the character page"
       character.revive
       redirect_to user_character_path(current_user, character)
     end
   end
+
 
   def update_battle
 
@@ -80,6 +86,7 @@ class GamesController < ApplicationController
     end
   end
 
+  # creates a game, merchant and character because it would be very tedious to go to three different creates at creation 
   def create
     @game = Game.create
     @character = Character.create(character_params)
@@ -96,6 +103,7 @@ class GamesController < ApplicationController
     end
   end
 
+  # destorys a game obejct 
   def destroy
     @game = Game.find(params[:id])
     @game.destroy
