@@ -4,7 +4,11 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :new, :create, :edit, :update] do
     resources :games, only: [:new, :create, :show, :delete]
-    resources :characters
+    resources :characters, only: [:show, :new, :create] do
+      get 'all_items', to: 'characters#all_items'
+    end
+
+
   end
 
   resources :characters, only: [:show] do
@@ -17,6 +21,7 @@ Rails.application.routes.draw do
   resources :weapons, only: [:show, :index ]
   resources :armors, only: [:show, :index ]
   resources :potions, only: [:show, :index ]
+
 
   get '/boss', to: 'games#boss_battle'
   post '/buy_item', to: 'merchants#buy_item'

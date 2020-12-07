@@ -32,7 +32,10 @@
 <%= "Seems like you don't have any equipment, you should go to the merchant!" %>
 <%end%><br>
 <%= link_to "Character Inventory", character_inventory_path(@character) %><br>
-<%= link_to "Edit Character Information", edit_user_character_path(@character) %><br>
+
+<%= link_to "All character items", user_character_all_items_path(current_user,@character) %><br>
+
+<%# <%= link_to "Edit Character Information", edit_user_character_path(@character) %>
 <%= link_to "Go to Merchant", merchant_path %><br>
 <%if @character.inventory.weapons.present? && @character.inventory.armors.present? %>
 <%= link_to "Fight Enemies", user_game_path(@character.game, :enemy_type => "enemy") %><br>

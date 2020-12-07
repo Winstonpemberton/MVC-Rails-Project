@@ -22,6 +22,15 @@ class CharactersController < ApplicationController
     @game = @character.game
   end
 
+  def all_items
+    @items = []
+    @character = Character.find(params[:character_id])
+    @weapon = @character.weapon 
+    @armor = @character.armor 
+    @items << @weapon 
+    @items << @armor
+  end
+
   # loads the new character page for characters 
   def new
     @user = current_user
