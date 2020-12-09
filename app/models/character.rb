@@ -4,12 +4,18 @@ class Character < ApplicationRecord
   scope :sort_by_name, -> { order(name: :asc) }
   # scope method for getting only the characters who have above 10 gold 
   scope :gold_above_10, -> { where("gold > 10") }
+  scope :get_character, -> (character_id) { where("id = ?", character_id) }
+  # scope :sort_items, -> { joins("weapons").joins("armors").order("cost") }
+
+
+  
 
   validates :name, presence: true
   validates :background, presence: true
   
   belongs_to :game
-  belongs_to :user
+
+  scope :all_items, -> { where('cost > 10')}
   has_one :inventory
   has_one :weapon
   has_one :armor
@@ -25,6 +31,12 @@ class Character < ApplicationRecord
     enemy.update(:health => (enemy.health - weapon.damage))
     self.update(:health => (self.health - (enemy.damage - armor.armor_rating)))
     "you attacked #{enemy.name} for #{weapon.damage} damage and recieved #{enemy.damage} damage"
+  end
+
+  def items
+    items = []
+    items << self.weapon
+    items << self.armor
   end
 
   # heals the character and removes it from the characters inventory and displays empty if there's no more
